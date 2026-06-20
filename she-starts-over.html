@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>She Starts Over — For Female Solopreneurs Who Don't Want to Do It Alone</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --burgundy: #6B1E2E;
+      --burgundy-deep: #4A1020;
+      --terracotta: #B8788A;
+      --blush: #F2DDD5;
+      --blush-light: #FAF3F0;
+      --cream: #FDF8F5;
+      --ink: #1C1410;
+      --ink-mid: #4A3728;
+      --ink-light: #8C6D5E;
+      --white: #FFFFFF;
+      --divider: #E8D5CC;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(253, 248, 245, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--divider);
+    }
+    .nav-logo {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      text-decoration: none;
+    }
+    .nav-cta {
+      background: var(--burgundy);
+      color: var(--white);
+      padding: 0.55rem 1.3rem;
+      border-radius: 2px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--burgundy-deep); }
+
+    /* SECTIONS */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 720px; margin: 0 auto; }
+    .container-wide { max-width: 960px; margin: 0 auto; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 8rem;
+      padding-bottom: 5rem;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -180px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(194, 99, 58, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--burgundy);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--ink-mid);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--burgundy);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 2px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--burgundy-deep); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-block;
+      color: var(--ink-mid);
+      font-size: 14px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* IDENTITY */
+    .identity { background: var(--burgundy); color: var(--white); }
+    .identity .section-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.5rem;
+    }
+    .identity h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 2.5rem;
+      color: var(--white);
+    }
+    .identity-body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.85);
+      max-width: 580px;
+    }
+    .identity-body p { margin-bottom: 1.2rem; }
+    .identity-body strong { color: var(--white); font-weight: 500; }
+    .identity-closer {
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--blush);
+      font-style: italic;
+    }
+
+    /* SOLUTION */
+    .solution { background: var(--blush-light); }
+    .section-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .solution h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--ink);
+    }
+    .solution-body {
+      font-size: 1.05rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+    .solution-body p { margin-bottom: 1.1rem; }
+
+    /* INCLUDED */
+    .included { background: var(--cream); }
+    .included h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: var(--ink);
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5px;
+      background: var(--divider);
+      border: 1.5px solid var(--divider);
+    }
+    .feature {
+      background: var(--cream);
+      padding: 2rem;
+    }
+    .feature-icon {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .feature h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.01em;
+    }
+    .feature p {
+      font-size: 0.92rem;
+      color: var(--ink-mid);
+      line-height: 1.7;
+    }
+
+    /* FOR YOU */
+    .for-you { background: var(--blush-light); }
+    .for-you h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: var(--ink);
+    }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; gap: 2rem; } }
+    .list-block h3 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.2rem;
+    }
+    .list-block.not h3 { color: var(--ink-light); }
+    .list-block ul { list-style: none; }
+    .list-block ul li {
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--divider);
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      line-height: 1.5;
+    }
+    .list-block ul li::before { content: '✓'; color: var(--terracotta); font-weight: 600; flex-shrink: 0; margin-top: 1px; }
+    .list-block.not ul li::before { content: '—'; color: var(--ink-light); }
+
+    /* HOW IT WORKS */
+    .how { background: var(--cream); }
+    .how h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: var(--ink);
+    }
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 1.5rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--divider);
+      align-items: start;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--blush);
+      line-height: 1;
+      padding-top: 4px;
+    }
+    .step h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+    .step p { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.7; }
+    .how .btn-primary { margin-top: 2.5rem; }
+
+    /* FOUNDER */
+    .founder { background: var(--blush); }
+    .founder-inner {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 640px) { .founder-inner { grid-template-columns: 1fr; } }
+    .founder-photo {
+      width: 200px;
+      height: 240px;
+      background: var(--divider);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .founder-photo-placeholder {
+      font-size: 13px;
+      color: var(--ink-light);
+      text-align: center;
+      padding: 1rem;
+      line-height: 1.5;
+    }
+    .founder-text .eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .founder-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      color: var(--ink);
+    }
+    .founder-text p {
+      font-size: 0.98rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--cream); }
+    .testimonials h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: var(--ink);
+    }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .testi {
+      background: var(--blush-light);
+      border: 1px solid var(--divider);
+      border-radius: 2px;
+      padding: 1.8rem;
+    }
+    .testi-quote {
+      font-size: 1.5rem;
+      color: var(--terracotta);
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+    .testi p {
+      font-size: 0.93rem;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 1.2rem;
+    }
+    .testi-author {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* FOUNDING OFFER */
+    .offer {
+      background: var(--burgundy-deep);
+      color: var(--white);
+      text-align: center;
+    }
+    .offer .section-label { color: rgba(255,255,255,0.45); text-align: center; }
+    .offer h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+      line-height: 1.2;
+    }
+    .offer-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .offer .btn-primary {
+      background: var(--terracotta);
+      font-size: 16px;
+      padding: 1rem 2.2rem;
+    }
+    .offer .btn-primary:hover { background: #9D6070; }
+    .offer-note {
+      margin-top: 1.2rem;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      font-style: italic;
+    }
+
+    /* SHE CONNECTS */
+    .she-connects { background: var(--blush-light); }
+    .she-connects-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media (max-width: 640px) { .she-connects-inner { grid-template-columns: 1fr; } }
+    .she-connects h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+    .she-connects p {
+      font-size: 0.98rem;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .event-card {
+      background: var(--white);
+      border: 1px solid var(--divider);
+      border-radius: 2px;
+      padding: 2rem;
+    }
+    .event-card-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+    }
+    .event-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .event-detail {
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      margin-bottom: 1.5rem;
+    }
+    .btn-outline {
+      display: inline-block;
+      border: 1.5px solid var(--burgundy);
+      color: var(--burgundy);
+      padding: 0.75rem 1.5rem;
+      border-radius: 2px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: var(--burgundy); color: var(--white); }
+
+    /* CLOSING */
+    .closing {
+      background: var(--cream);
+      text-align: center;
+      padding: 7rem 2rem;
+    }
+    .closing h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+    .closing h2 em { font-style: italic; color: var(--burgundy); }
+    .closing p {
+      font-size: 1rem;
+      color: var(--ink-mid);
+      margin-bottom: 2.5rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 2rem;
+      font-size: 13px;
+    }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      section { padding: 4rem 1.25rem; }
+      nav { padding: 1rem 1.25rem; }
+      .hero { padding: 7rem 1.25rem 4rem; }
+    }
+
+    /* REDUCED MOTION */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">She Starts Over</a>
+  <a href="#offer" class="nav-cta">Book a call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <span class="hero-eyebrow">A curated community for solopreneurs</span>
+    <h1>You're building something real.<br><em>You deserve an inner circle</em><br>cheering you on every step.</h1>
+    <p class="hero-sub">She Starts Over is a curated community for female solopreneurs running independent, service-based businesses — done building in isolation, and ready for genuine connection, honest conversations, and people who truly get it.</p>
+    <div class="hero-actions">
+      <a href="#offer" class="btn-primary">Book a founding member call 🧡</a>
+      <a href="#she-connects" class="btn-secondary">Not sure yet? Experience it first →</a>
+    </div>
+  </div>
+</section>
+
+<!-- IDENTITY -->
+<section class="identity">
+  <div class="container">
+    <p class="section-label">This space is made for you if...</p>
+    <h2>You'll recognise yourself<br>in the women here.</h2>
+    <div class="identity-body">
+      <p>You've built a business around your skills and your name — coaching, marketing, branding, PR, sales funnels, or something close to it. You show up as yourself, every day, and that's exactly how you like it.</p>
+      <p>You've tried talking to friends about your business but they support you without really understanding you. They mean well — they just don't know what it's like.</p>
+      <p>You can't be bothered to attend another networking event because honestly — it leads nowhere. Surface-level conversations, a pile of LinkedIn connections, and you go home feeling emptier than before.</p>
+      <p>You're not interested in "10x your revenue" energy or rooms full of people chasing the next funding round. You just want real conversations with women who get what it's like to build something solo.</p>
+      <p>What you actually crave is genuine connection with women who understand your challenges, your vision, and your journey.</p>
+    </div>
+    <p class="identity-closer">In other words — you need other solopreneurs in your corner. 🧡</p>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution">
+  <div class="container">
+    <span class="section-label">That's why She Starts Over exists</span>
+    <h2>Friendships that make<br>solo business ownership less lonely —<br>and a lot more fun.</h2>
+    <div class="solution-body">
+      <p>A small, intentional community where women running independent, service-based businesses find friendships that actually last.</p>
+      <p>This is for women who've chosen flexibility and independence on purpose — not as a stepping stone to something bigger, but because this is the life they want.</p>
+      <p>I keep it intimate on purpose — because genuine connection doesn't happen in big impersonal rooms. Every member is reviewed personally before joining, because the quality of the room is everything.</p>
+      <p>I want to protect the energy and vibe we're creating together.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDED -->
+<section class="included">
+  <div class="container-wide">
+    <span class="section-label">What's included</span>
+    <h2>Here's what being a member looks like</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">💬</div>
+        <h3>Weekly Sessions</h3>
+        <p>Alternating between Idea Circles — where someone brings a real challenge and the group helps solve it — and Feedback Rounds, where you get honest input on your offer, content, or next move. Real experiences, real ideas, real momentum.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🏠</div>
+        <h3>Member Lounge</h3>
+        <p>An ongoing space to share your weekly intentions, celebrate wins, ask questions, and support each other between sessions. The 3 AM thoughts, the small wins, the honest check-ins. This is where the day-to-day connection lives.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">✨</div>
+        <h3>She Connects — Quarterly</h3>
+        <p>A curated online event bringing together a wider circle of women in business. Connection with intention — not another networking event that leads nowhere.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">☕</div>
+        <h3>Brunch &amp; Meetups — Amsterdam</h3>
+        <p>Intimate in-person gatherings for Amsterdam-based members — brunches, dinners, and the occasional coworking session. Because some conversations are better over coffee and croissants.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR YOU -->
+<section class="for-you">
+  <div class="container">
+    <span class="section-label">Is this for you?</span>
+    <h2>The right fit matters to us both.</h2>
+    <div class="two-col">
+      <div class="list-block">
+        <h3>This is for you if</h3>
+        <ul>
+          <li>You run an independent, service-based business — coaching, marketing, branding, PR, sales funnels, or similar</li>
+          <li>Your business is built around you and your personal brand, often via LinkedIn</li>
+          <li>You're based in or generally available during European time zones</li>
+          <li>You've chosen this path for flexibility and alignment — not to build "the next big thing"</li>
+          <li>You want real friendships, not just contacts</li>
+          <li>You show up for others as much as you want them to show up for you</li>
+        </ul>
+      </div>
+      <div class="list-block not">
+        <h3>This isn't for you if</h3>
+        <ul>
+          <li>You're raising funding or scaling a tech product</li>
+          <li>You're a digital nomad without a steady timezone</li>
+          <li>You're looking for "exceptional girls, scale faster" energy</li>
+          <li>You join communities and disappear</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="container">
+    <span class="section-label">How it works</span>
+    <h2>Three steps to joining</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <h3>Book a call</h3>
+          <p>Click below to schedule your founding member conversation. It's just 20 minutes — relaxed, personal, no pressure.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <h3>Let's talk</h3>
+          <p>We'll have a genuine conversation about what you're building and what you're looking for. I'll share what the community looks like in practice. If it feels like a mutual fit — you're in.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <h3>Welcome home</h3>
+          <p>Once you join, you'll be welcomed into the community and introduced to your fellow founding members. This is where it begins.</p>
+        </div>
+      </div>
+    </div>
+    <a href="#offer" class="btn-primary">Book a founding member call 🧡</a>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder">
+  <div class="container">
+    <div class="founder-inner">
+      <div class="founder-photo">
+        <div class="founder-photo-placeholder">Your photo<br>goes here 🧡</div>
+      </div>
+      <div class="founder-text">
+        <span class="eyebrow">Hi, I'm Urte</span>
+        <h2>I built this community because I needed it myself.</h2>
+        <p>After burnout and taking time to reconnect with myself, I started my own business — and realised the thing that changed everything wasn't a course or a strategy.</p>
+        <p>It was the right people in my corner.</p>
+        <p>I'm a community builder at heart. I've spent years creating spaces where meaningful conversations happen, where people feel genuinely seen, and where real relationships are built.</p>
+        <p>She Starts Over was born from my own experience of building alone — and my belief that success feels better when it's shared.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container-wide">
+    <span class="section-label">What members say</span>
+    <h2>In their own words</h2>
+    <div class="testi-grid">
+      <div class="testi">
+        <div class="testi-quote">"</div>
+        <p>Add your first testimonial here. Ask your workshop attendees or current community members for a short quote about what working with you has meant to them.</p>
+        <div class="testi-author">Name — Job title, Business</div>
+      </div>
+      <div class="testi">
+        <div class="testi-quote">"</div>
+        <p>A second testimonial goes here. Ask them specifically to speak to how the community or your facilitation made them feel as a solopreneur.</p>
+        <div class="testi-author">Name — Job title, Business</div>
+      </div>
+      <div class="testi">
+        <div class="testi-quote">"</div>
+        <p>A third testimonial here. Even two or three genuine sentences from real women carries enormous weight.</p>
+        <div class="testi-author">Name — Job title, Business</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDING OFFER -->
+<section class="offer" id="offer">
+  <div class="container">
+    <p class="section-label">Founding membership</p>
+    <h2>Become a founding member</h2>
+    <p class="offer-sub">She Starts Over is opening to a small founding group of 10 women. Founding members receive a special rate locked in for their first 6 months — as a thank you for being among the first through the door.</p>
+    <a href="https://calendly.com" target="_blank" class="btn-primary">Book your founding member call 🧡</a>
+    <p class="offer-note">A relaxed 20 minute conversation. No pressure — just a chance to see if it feels right for both of us.</p>
+  </div>
+</section>
+
+<!-- SHE CONNECTS -->
+<section class="she-connects" id="she-connects">
+  <div class="container-wide">
+    <div class="she-connects-inner">
+      <div>
+        <span class="section-label">Not sure yet?</span>
+        <h2>Experience She Starts Over in person first.</h2>
+        <p>She Connects is a curated online event — the best way to feel the energy of the community before committing to membership.</p>
+        <p>Not another networking event. A genuine, curated experience, intentionally designed to create real connections.</p>
+      </div>
+      <div class="event-card">
+        <div class="event-card-label">Upcoming event</div>
+        <h3>She Connects</h3>
+        <div class="event-detail">August 19th · 12PM CET · Online · €25</div>
+        <a href="https://eventbrite.com" target="_blank" class="btn-outline">Reserve your spot →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="container">
+    <h2>One meaningful conversation can<br>change the trajectory of <em>your</em> business.</h2>
+    <p>You don't have to build alone.</p>
+    <a href="#offer" class="btn-primary">Book a founding member call 🧡</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>She Starts Over © 2025 &nbsp;·&nbsp; For female solopreneurs who don't want to do it alone. 🧡 &nbsp;·&nbsp; <a href="https://linkedin.com" target="_blank">LinkedIn</a></p>
+</footer>
+
+</body>
+</html>

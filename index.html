@@ -888,6 +888,8 @@
       transition-delay: calc(var(--wi, 1) * 45ms);
     }
     .closing-headline.words-on .w { opacity: 1; transform: none; }
+    /* Fallback: if JS hasn't run, words are visible */
+    :not(.js-ready) .closing-headline .w { opacity: 1; transform: none; }
 
     .closing p { font-size: 1rem; color: var(--ink-mid); margin-bottom: 2.5rem; }
 
@@ -1775,14 +1777,14 @@
   // ── Closing headline — word reveal ──
   var closingH2 = document.getElementById('closing-headline');
   if (closingH2) {
-    var wordObs = makeObserver(function (entries) {
+    var wordObs = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('words-on');
           wordObs.unobserve(entry.target);
         }
       });
-    }, 0.3);
+    }, { threshold: 0 }); // threshold 0: fires the moment any pixel enters view
     wordObs.observe(closingH2);
   }
 

@@ -3,34 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#FDF8F5" />
-  <meta name="description" content="She Starts Over is a curated community for female solopreneurs done building alone. Real friendships. Honest conversations. Women who get it." />
-  <title>She Starts Over — For Female Solopreneurs Who Don't Want to Do It Alone</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%236B1E2E'/><text x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>S</text></svg>" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Playfair+Display:ital,wght@0,700;1,500;1,700&display=swap" rel="stylesheet" />
+  <title>She Starts Over | For Female Solopreneurs Who Don't Want to Do It Alone</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet" />
   <style>
-
-    /* === RESET === */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* === DESIGN TOKENS === */
     :root {
-      --burgundy:      #6B1E2E;
+      --burgundy: #6B1E2E;
       --burgundy-deep: #4A1020;
-      --terracotta:    #B8788A;
-      --blush:         #F2DDD5;
-      --blush-light:   #FAF3F0;
-      --cream:         #FDF8F5;
-      --ink:           #1C1410;
-      --ink-mid:       #4A3728;
-      --ink-light:     #8C6D5E;
-      --white:         #FFFFFF;
-      --divider:       #E8D5CC;
+      --terracotta: #B8788A;
+      --blush: #F2DDD5;
+      --blush-light: #FAF3F0;
+      --cream: #FDF8F5;
+      --ink: #1C1410;
+      --ink-mid: #4A3728;
+      --ink-light: #8C6D5E;
+      --white: #FFFFFF;
+      --divider: #E8D5CC;
     }
 
-    /* === BASE === */
     html { scroll-behavior: smooth; }
 
     body {
@@ -42,225 +33,58 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* === FOCUS === */
-    :focus-visible {
-      outline: 2px solid var(--burgundy);
-      outline-offset: 3px;
-      border-radius: 3px;
-    }
-
-    /* === SCROLL PROGRESS BAR === */
-    #scroll-progress {
-      position: fixed;
-      top: 0; left: 0;
-      height: 2px;
-      background: var(--burgundy);
-      width: 0%;
-      z-index: 300;
-      pointer-events: none;
-      transition: width 0.1s linear;
-    }
-
-    /* === BACK TO TOP === */
-    #back-to-top {
-      position: fixed;
-      bottom: 2rem; right: 2rem;
-      background: var(--burgundy);
-      color: var(--white);
-      border: none;
-      border-radius: 100px;
-      padding: 0.55rem 1.15rem;
-      font-size: 12px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      letter-spacing: 0.07em;
-      cursor: pointer;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease;
-      pointer-events: none;
-      z-index: 90;
-    }
-    #back-to-top.is-visible {
-      opacity: 0.82;
-      transform: none;
-      pointer-events: auto;
-    }
-    #back-to-top:hover {
-      opacity: 1;
-      box-shadow: 0 4px 16px rgba(107,30,46,0.25);
-    }
-
-    /* === CURSOR GLOW (injected by JS on desktop only) === */
-    #cursor-glow {
-      position: fixed;
-      width: 340px; height: 340px;
-      top: 0; left: 0;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(107,30,46,0.05) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-      will-change: transform;
-    }
-
-    /* === NAV === */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 0.9rem 2rem;
+      padding: 1.1rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(253, 248, 245, 0.93);
+      background: rgba(253, 248, 245, 0.92);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--divider);
-      transition: box-shadow 0.3s ease, border-color 0.3s ease;
     }
-    nav.scrolled {
-      border-bottom-color: transparent;
-      box-shadow: 0 2px 28px rgba(107,30,46,0.09);
-    }
-
     .nav-logo {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      text-decoration: none;
-      line-height: 1.2;
-    }
-    .nav-logo-name {
       font-family: 'DM Sans', sans-serif;
       font-weight: 600;
-      font-size: 13px;
-      letter-spacing: 0.1em;
+      font-size: 15px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--burgundy);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
     }
-    .nav-logo-tag {
+    .nav-logo-sub {
       font-size: 10px;
       font-weight: 400;
-      font-style: italic;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
+      text-transform: none;
       color: var(--ink-light);
+      font-style: italic;
     }
-
     .nav-cta {
-      background: linear-gradient(135deg, var(--burgundy) 0%, #8B2E42 100%);
+      background: var(--burgundy);
       color: var(--white);
-      padding: 0.58rem 1.4rem;
-      border-radius: 100px;
+      padding: 0.55rem 1.3rem;
+      border-radius: 2px;
       font-size: 13px;
       font-weight: 500;
       letter-spacing: 0.04em;
       text-decoration: none;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: background 0.2s;
     }
-    .nav-cta::after {
-      content: '';
-      position: absolute;
-      top: -50%; left: -75%;
-      width: 50%; height: 200%;
-      background: linear-gradient(to right, transparent, rgba(255,255,255,0.18), transparent);
-      transform: skewX(-20deg);
-      transition: left 0.5s ease;
-      pointer-events: none;
-    }
-    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(107,30,46,0.26); }
-    .nav-cta:hover::after { left: 125%; }
+    .nav-cta:hover { background: var(--burgundy-deep); }
 
-    /* === LAYOUT === */
+    /* SECTIONS */
     section { padding: 6rem 2rem; }
     .container { max-width: 720px; margin: 0 auto; }
     .container-wide { max-width: 960px; margin: 0 auto; }
 
-    /* === SECTION LABEL === */
-    .section-label {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--terracotta);
-      margin-bottom: 1.2rem;
-      display: block;
-    }
-
-    /* === BUTTONS === */
-    .btn-primary {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--burgundy) 0%, #8B2E42 100%);
-      color: var(--white);
-      padding: 0.95rem 2.2rem;
-      border-radius: 100px;
-      font-size: 15px;
-      font-weight: 500;
-      text-decoration: none;
-      letter-spacing: 0.03em;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .btn-primary::after {
-      content: '';
-      position: absolute;
-      top: -50%; left: -75%;
-      width: 50%; height: 200%;
-      background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-      transform: skewX(-20deg);
-      transition: left 0.5s ease;
-      pointer-events: none;
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(107,30,46,0.28); }
-    .btn-primary:hover::after { left: 125%; }
-
-    .btn-secondary {
-      display: inline-block;
-      color: var(--ink-mid);
-      font-size: 14px;
-      text-decoration: none;
-      position: relative;
-    }
-    .btn-secondary::after {
-      content: '';
-      position: absolute;
-      bottom: -2px; left: 0;
-      width: 0; height: 1px;
-      background: var(--ink-mid);
-      transition: width 0.3s ease;
-    }
-    .btn-secondary:hover::after { width: 100%; }
-
-    .btn-outline {
-      display: inline-block;
-      border: 1.5px solid var(--burgundy);
-      color: var(--burgundy);
-      padding: 0.78rem 1.8rem;
-      border-radius: 100px;
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: background 0.22s ease, color 0.22s ease, transform 0.2s ease;
-    }
-    .btn-outline:hover { background: var(--burgundy); color: var(--white); transform: translateY(-1px); }
-
-    /* === HEARTBEAT EMOJI === */
-    .hb {
-      display: inline-block;
-      animation: heartbeat 3.2s ease-in-out infinite;
-    }
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      12%       { transform: scale(1.16); }
-      24%       { transform: scale(1); }
-      38%       { transform: scale(1.09); }
-      50%       { transform: scale(1); }
-    }
-
-    /* =============================================
-       HERO
-    ============================================= */
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -271,135 +95,74 @@
       position: relative;
       overflow: hidden;
     }
-
-    /* Ambient blobs — pure CSS animation, transform only */
-    .blob {
+    .hero::before {
+      content: '';
       position: absolute;
-      border-radius: 50%;
+      top: -120px; right: -180px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(194, 99, 58, 0.08) 0%, transparent 70%);
       pointer-events: none;
     }
-    .blob-1 {
-      width: 700px; height: 700px;
-      top: -180px; right: -220px;
-      background: radial-gradient(circle, rgba(184,120,138,0.10) 0%, transparent 65%);
-      animation: bf1 15s ease-in-out infinite;
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.5rem;
     }
-    .blob-2 {
-      width: 440px; height: 440px;
-      bottom: -140px; left: -130px;
-      background: radial-gradient(circle, rgba(107,30,46,0.07) 0%, transparent 65%);
-      animation: bf2 19s ease-in-out infinite;
-    }
-    .blob-3 {
-      width: 300px; height: 300px;
-      top: 42%; left: 52%;
-      background: radial-gradient(circle, rgba(242,221,213,0.5) 0%, transparent 70%);
-      animation: bf3 12s ease-in-out infinite 1.5s;
-    }
-    @keyframes bf1 {
-      0%,100% { transform: translate(0,0) scale(1); }
-      33%     { transform: translate(-16px, 20px) scale(1.02); }
-      66%     { transform: translate(10px, -16px) scale(0.98); }
-    }
-    @keyframes bf2 {
-      0%,100% { transform: translate(0,0) scale(1); }
-      40%     { transform: translate(18px, -26px) scale(1.03); }
-      70%     { transform: translate(-10px, 12px) scale(0.97); }
-    }
-    @keyframes bf3 {
-      0%,100% { transform: translate(0,0); }
-      50%     { transform: translate(-18px, 16px); }
-    }
-
-    /* Hero content sits above blobs */
-    .hero > .container { position: relative; z-index: 1; }
-
-    /* Decorative marker line */
-    .hero-marker {
-      width: 36px; height: 2px;
-      background: var(--terracotta);
-      margin-bottom: 2rem;
-    }
-
-    /* Typographic headline */
-    .hero-headline { margin-bottom: 2.2rem; }
-
-    .hl-quiet {
-      font-weight: 300;
-      font-size: clamp(0.9rem, 1.8vw, 1.05rem);
-      letter-spacing: 0.08em;
-      color: var(--ink-light);
-      margin-bottom: 0.7rem;
-      white-space: nowrap;
-    }
-    .hl-pre {
-      display: block;
-      font-weight: 400;
-      font-size: clamp(1rem, 2.2vw, 1.3rem);
-      color: var(--ink-mid);
-      margin-bottom: 0.05rem;
-    }
-    .hl-em {
-      display: block;
+    .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-style: italic;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
       font-weight: 700;
-      font-size: clamp(3rem, 9.5vw, 6.8rem);
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .hero h1 em {
+      font-style: italic;
       color: var(--burgundy);
-      line-height: 0.9;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.025em;
     }
-    .hl-post {
-      display: block;
-      font-weight: 300;
-      font-size: clamp(0.9rem, 1.8vw, 1.05rem);
-      letter-spacing: 0.08em;
-      color: var(--ink-light);
-    }
-
     .hero-sub {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       color: var(--ink-mid);
-      max-width: 520px;
+      max-width: 560px;
       margin-bottom: 2.5rem;
-      line-height: 1.78;
+      line-height: 1.7;
     }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
-
-    /* Hero stagger — pure CSS animation, no JS dependency */
-    .rh {
-      opacity: 0;
-      animation: heroIn 0.65s cubic-bezier(0.22, 0.9, 0.4, 1) forwards;
-      animation-delay: var(--d, 0ms);
-    }
-    @keyframes heroIn {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: none; }
-    }
-
-    /* =============================================
-       IDENTITY
-    ============================================= */
-    .identity {
+    .btn-primary {
+      display: inline-block;
       background: var(--burgundy);
       color: var(--white);
-      position: relative;
-      overflow: hidden;
+      padding: 0.9rem 2rem;
+      border-radius: 2px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s;
     }
-    /* Atmospheric large quote mark */
-    .identity::after {
-      content: '\201C';
-      position: absolute;
-      font-family: 'Playfair Display', serif;
-      font-size: 30rem;
-      color: rgba(255,255,255,0.03);
-      line-height: 1;
-      top: -5rem; right: -1rem;
-      pointer-events: none;
-      font-style: italic;
+    .btn-primary:hover { background: var(--burgundy-deep); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-block;
+      color: var(--ink-mid);
+      font-size: 14px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
-    .identity .section-label { color: rgba(255,255,255,0.42); }
+
+    /* IDENTITY */
+    .identity { background: var(--burgundy); color: var(--white); }
+    .identity .section-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.5rem;
+    }
     .identity h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.8rem, 3.5vw, 2.5rem);
@@ -410,36 +173,31 @@
     }
     .identity-body {
       font-size: 1.05rem;
-      line-height: 1.85;
-      color: rgba(255,255,255,0.82);
+      line-height: 1.8;
+      color: rgba(255,255,255,0.85);
       max-width: 580px;
     }
     .identity-body p { margin-bottom: 1.2rem; }
     .identity-body strong { color: var(--white); font-weight: 500; }
-
     .identity-closer {
       margin-top: 2rem;
       font-size: 1.1rem;
       font-weight: 500;
       color: var(--blush);
       font-style: italic;
-      display: inline-block;
-      position: relative;
     }
-    .identity-closer::after {
-      content: '';
-      position: absolute;
-      bottom: -3px; left: 0;
-      width: 0; height: 1.5px;
-      background: var(--blush);
-      transition: width 1.1s ease 0.3s;
-    }
-    .identity-closer.line-on::after { width: 100%; }
 
-    /* =============================================
-       SOLUTION
-    ============================================= */
+    /* SOLUTION */
     .solution { background: var(--blush-light); }
+    .section-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.2rem;
+      display: block;
+    }
     .solution h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.8rem, 3.5vw, 2.5rem);
@@ -448,12 +206,15 @@
       margin-bottom: 1.5rem;
       color: var(--ink);
     }
-    .solution-body { font-size: 1.05rem; color: var(--ink-mid); line-height: 1.8; max-width: 600px; }
+    .solution-body {
+      font-size: 1.05rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      max-width: 600px;
+    }
     .solution-body p { margin-bottom: 1.1rem; }
 
-    /* =============================================
-       FLIP CARDS
-    ============================================= */
+    /* INCLUDED */
     .included { background: var(--cream); }
     .included h2 {
       font-family: 'Playfair Display', serif;
@@ -462,98 +223,35 @@
       margin-bottom: 3rem;
       color: var(--ink);
     }
-
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
-      gap: 1.2rem;
-    }
-
-    .flip-card {
-      height: 265px;
-      perspective: 1000px;
-      cursor: pointer;
-      touch-action: manipulation;
-    }
-    .flip-card-inner {
-      position: relative;
-      width: 100%; height: 100%;
-      transform-style: preserve-3d;
-      transition: transform 0.25s ease-in-out;
-      will-change: transform;
-    }
-    .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
-
-    .flip-card-front,
-    .flip-card-back {
-      position: absolute;
-      inset: 0;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      border-radius: 8px;
-      padding: 1.8rem;
-      display: flex;
-      flex-direction: column;
-    }
-    .flip-card-front {
-      background: var(--cream);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5px;
+      background: var(--divider);
       border: 1.5px solid var(--divider);
-      justify-content: center;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
-    .flip-card:hover .flip-card-front {
-      border-color: var(--terracotta);
-      box-shadow: 0 6px 28px rgba(107,30,46,0.09);
+    .feature {
+      background: var(--cream);
+      padding: 2rem;
     }
-    .flip-card-back {
-      background: var(--burgundy);
-      transform: rotateY(180deg);
-      justify-content: center;
+    .feature-icon {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
-
-    .flip-icon { font-size: 2.2rem; margin-bottom: 0.9rem; line-height: 1; }
-
-    .flip-card-front h3 {
+    .feature h3 {
       font-size: 1rem;
       font-weight: 600;
       color: var(--ink);
-      margin-bottom: 0;
+      margin-bottom: 0.6rem;
       letter-spacing: 0.01em;
     }
-    .flip-card-back h3 {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 0.6rem;
-    }
-    .flip-card-back p {
-      font-size: 0.87rem;
-      color: rgba(255,255,255,0.88);
-      line-height: 1.72;
+    .feature p {
+      font-size: 0.92rem;
+      color: var(--ink-mid);
+      line-height: 1.7;
     }
 
-    .flip-hint {
-      font-size: 10.5px;
-      letter-spacing: 0.07em;
-      color: var(--terracotta);
-      margin-top: auto;
-      padding-top: 1rem;
-      text-transform: uppercase;
-    }
-    .flip-hint-back {
-      color: rgba(255,255,255,0.35);
-      font-size: 10.5px;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      margin-top: auto;
-      padding-top: 0.8rem;
-    }
-
-    /* =============================================
-       FOR YOU
-    ============================================= */
+    /* FOR YOU */
     .for-you { background: var(--blush-light); }
     .for-you h2 {
       font-family: 'Playfair Display', serif;
@@ -564,11 +262,10 @@
     }
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
     @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; gap: 2rem; } }
-
     .list-block h3 {
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--terracotta);
       margin-bottom: 1.2rem;
@@ -578,25 +275,17 @@
     .list-block ul li {
       font-size: 0.95rem;
       color: var(--ink-mid);
-      padding: 0.65rem 0;
+      padding: 0.6rem 0;
       border-bottom: 1px solid var(--divider);
       display: flex;
       gap: 0.7rem;
       align-items: flex-start;
       line-height: 1.5;
     }
-    .list-block ul li::before {
-      content: '✓';
-      color: var(--terracotta);
-      font-weight: 600;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
+    .list-block ul li::before { content: '✓'; color: var(--terracotta); font-weight: 600; flex-shrink: 0; margin-top: 1px; }
     .list-block.not ul li::before { content: '—'; color: var(--ink-light); }
 
-    /* =============================================
-       HOW IT WORKS
-    ============================================= */
+    /* HOW IT WORKS */
     .how { background: var(--cream); }
     .how h2 {
       font-family: 'Playfair Display', serif;
@@ -605,62 +294,34 @@
       margin-bottom: 3rem;
       color: var(--ink);
     }
-
-    .steps-wrapper { position: relative; }
-
-    /* Connector line — draws on scroll */
-    .steps-line {
-      position: absolute;
-      left: 21px;
-      top: 46px;
-      width: 1.5px;
-      height: calc(100% - 68px);
-      background: linear-gradient(to bottom, var(--burgundy), transparent);
-      opacity: 0.18;
-      transform: scaleY(0);
-      transform-origin: top;
-      transition: transform 1.4s cubic-bezier(0.4,0,0.2,1) 0.4s;
-      pointer-events: none;
-    }
-    .steps-wrapper.steps-on .steps-line { transform: scaleY(1); }
-
-    .steps { display: flex; flex-direction: column; }
+    .steps { display: flex; flex-direction: column; gap: 0; }
     .step {
       display: grid;
-      grid-template-columns: 44px 1fr;
+      grid-template-columns: 56px 1fr;
       gap: 1.5rem;
-      padding: 1.8rem 0;
+      padding: 2rem 0;
       border-bottom: 1px solid var(--divider);
       align-items: start;
     }
     .step:last-child { border-bottom: none; }
-
     .step-num {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: var(--burgundy);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      flex-shrink: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--blush);
+      line-height: 1;
+      padding-top: 4px;
     }
-    .step-body h3 {
+    .step h3 {
       font-size: 1rem;
       font-weight: 600;
       color: var(--ink);
       margin-bottom: 0.4rem;
-      padding-top: 10px;
     }
-    .step-body p { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.72; }
+    .step p { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.7; }
     .how .btn-primary { margin-top: 2.5rem; }
 
-    /* =============================================
-       FOUNDER
-    ============================================= */
+    /* FOUNDER */
     .founder { background: var(--blush); }
     .founder-inner {
       display: grid;
@@ -669,25 +330,28 @@
       align-items: start;
     }
     @media (max-width: 640px) { .founder-inner { grid-template-columns: 1fr; } }
-
     .founder-photo {
-      width: 200px; height: 240px;
+      width: 200px;
+      height: 240px;
       background: var(--divider);
-      border-radius: 6px;
+      border-radius: 2px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       overflow: hidden;
-      box-shadow: 0 6px 28px rgba(107,30,46,0.11);
     }
-    .founder-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .founder-photo-placeholder { font-size: 13px; color: var(--ink-light); text-align: center; padding: 1rem; line-height: 1.5; }
-
+    .founder-photo-placeholder {
+      font-size: 13px;
+      color: var(--ink-light);
+      text-align: center;
+      padding: 1rem;
+      line-height: 1.5;
+    }
     .founder-text .eyebrow {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--terracotta);
       margin-bottom: 1rem;
@@ -700,11 +364,14 @@
       margin-bottom: 1.2rem;
       color: var(--ink);
     }
-    .founder-text p { font-size: 0.98rem; color: var(--ink-mid); line-height: 1.8; margin-bottom: 1rem; }
+    .founder-text p {
+      font-size: 0.98rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
 
-    /* =============================================
-       TESTIMONIALS
-    ============================================= */
+    /* TESTIMONIALS */
     .testimonials { background: var(--cream); }
     .testimonials h2 {
       font-family: 'Playfair Display', serif;
@@ -721,58 +388,37 @@
     .testi {
       background: var(--blush-light);
       border: 1px solid var(--divider);
-      border-radius: 8px;
-      padding: 2rem;
-      transition: box-shadow 0.22s ease, transform 0.22s ease;
+      border-radius: 2px;
+      padding: 1.8rem;
     }
-    .testi:hover { box-shadow: 0 6px 28px rgba(107,30,46,0.09); transform: translateY(-2px); }
-
     .testi-quote {
-      font-family: 'Playfair Display', serif;
-      font-size: 4.5rem;
+      font-size: 1.5rem;
       color: var(--terracotta);
-      line-height: 0.75;
-      margin-bottom: 0.6rem;
-      opacity: 0.5;
+      line-height: 1;
+      margin-bottom: 0.8rem;
     }
-    .testi p { font-size: 0.93rem; color: var(--ink-mid); line-height: 1.82; font-style: italic; margin-bottom: 1.2rem; }
-    .testi-author { font-size: 0.8rem; font-weight: 600; color: var(--ink); letter-spacing: 0.04em; text-transform: uppercase; }
+    .testi p {
+      font-size: 0.93rem;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 1.2rem;
+    }
+    .testi-author {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
 
-    /* =============================================
-       FOUNDING OFFER
-    ============================================= */
+    /* FOUNDING OFFER */
     .offer {
       background: var(--burgundy-deep);
       color: var(--white);
       text-align: center;
     }
-    .offer .section-label { color: rgba(255,255,255,0.38); }
-
-    .spots-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 100px;
-      padding: 0.42rem 1rem;
-      font-size: 12px;
-      color: rgba(255,255,255,0.78);
-      letter-spacing: 0.05em;
-      margin-bottom: 1.8rem;
-    }
-    .spots-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--terracotta);
-      flex-shrink: 0;
-      animation: pdot 2.2s ease-in-out infinite;
-    }
-    @keyframes pdot {
-      0%,100% { opacity: 1; transform: scale(1); }
-      50%     { opacity: 0.4; transform: scale(0.6); }
-    }
-
+    .offer .section-label { color: rgba(255,255,255,0.45); text-align: center; }
     .offer h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2rem, 4vw, 3rem);
@@ -783,22 +429,25 @@
     }
     .offer-sub {
       font-size: 1rem;
-      color: rgba(255,255,255,0.7);
+      color: rgba(255,255,255,0.75);
       max-width: 500px;
       margin: 0 auto 2.5rem;
-      line-height: 1.78;
+      line-height: 1.7;
     }
     .offer .btn-primary {
-      background: linear-gradient(135deg, var(--terracotta) 0%, #9D6070 100%);
+      background: var(--terracotta);
       font-size: 16px;
-      padding: 1rem 2.4rem;
+      padding: 1rem 2.2rem;
     }
-    .offer .btn-primary:hover { box-shadow: 0 8px 28px rgba(184,120,138,0.4); }
-    .offer-note { margin-top: 1.2rem; font-size: 13px; color: rgba(255,255,255,0.38); font-style: italic; }
+    .offer .btn-primary:hover { background: #9D6070; }
+    .offer-note {
+      margin-top: 1.2rem;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      font-style: italic;
+    }
 
-    /* =============================================
-       SHE CONNECTS
-    ============================================= */
+    /* SHE CONNECTS */
     .she-connects { background: var(--blush-light); }
     .she-connects-inner {
       display: grid;
@@ -807,7 +456,6 @@
       align-items: center;
     }
     @media (max-width: 640px) { .she-connects-inner { grid-template-columns: 1fr; } }
-
     .she-connects h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.6rem, 3vw, 2.2rem);
@@ -815,14 +463,17 @@
       margin-bottom: 1rem;
       color: var(--ink);
     }
-    .she-connects p { font-size: 0.98rem; color: var(--ink-mid); line-height: 1.75; margin-bottom: 1.5rem; }
-
+    .she-connects p {
+      font-size: 0.98rem;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
     .event-card {
       background: var(--white);
       border: 1px solid var(--divider);
-      border-radius: 8px;
+      border-radius: 2px;
       padding: 2rem;
-      box-shadow: 0 3px 18px rgba(107,30,46,0.07);
     }
     .event-card-label {
       font-size: 11px;
@@ -831,331 +482,228 @@
       text-transform: uppercase;
       color: var(--terracotta);
       margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-    .live-dot {
-      display: inline-block;
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--terracotta);
-      flex-shrink: 0;
-      animation: pdot 2.2s ease-in-out infinite;
     }
     .event-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 0.35rem;
-    }
-    .event-detail { font-size: 0.88rem; color: var(--ink-light); margin-bottom: 0.5rem; }
-    .event-countdown {
-      font-size: 0.82rem;
+      font-size: 1.2rem;
       font-weight: 600;
-      color: var(--burgundy);
-      letter-spacing: 0.04em;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .event-detail {
+      font-size: 0.88rem;
+      color: var(--ink-light);
       margin-bottom: 1.5rem;
-      font-variant-numeric: tabular-nums;
-      min-height: 1.2em;
+    }
+    .btn-outline {
+      display: inline-block;
+      border: 1.5px solid var(--burgundy);
+      color: var(--burgundy);
+      padding: 0.75rem 1.5rem;
+      border-radius: 2px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: var(--burgundy); color: var(--white); }
+
+    /* LINKEDIN CONNECT */
+    .linkedin-connect {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-top: 1.8rem;
+      padding: 0.85rem 1.2rem;
+      background: var(--white);
+      border: 1px solid var(--divider);
+      border-radius: 2px;
+      text-decoration: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .linkedin-connect:hover {
+      border-color: var(--terracotta);
+      box-shadow: 0 2px 12px rgba(107, 30, 46, 0.08);
+    }
+    .linkedin-connect-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--burgundy);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .linkedin-connect-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .linkedin-connect-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .linkedin-connect-cta {
+      font-size: 12px;
+      color: var(--terracotta);
+      font-style: italic;
+      line-height: 1.3;
+    }
+    .linkedin-icon {
+      color: var(--ink-light);
+      flex-shrink: 0;
+      margin-left: auto;
     }
 
-    /* =============================================
-       CLOSING
-    ============================================= */
+    /* CLOSING */
     .closing {
       background: var(--cream);
       text-align: center;
       padding: 7rem 2rem;
     }
-    .closing-headline {
+    .closing h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.8rem, 4vw, 2.8rem);
       font-weight: 700;
       color: var(--ink);
       margin-bottom: 1rem;
-      line-height: 1.28;
+      line-height: 1.25;
     }
-    .closing-headline em { font-style: italic; color: var(--burgundy); }
-
-    /* Word-by-word reveal */
-    .closing-headline .w {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.45s ease, transform 0.45s ease;
-      transition-delay: calc(var(--wi, 1) * 45ms);
+    .closing h2 em { font-style: italic; color: var(--burgundy); }
+    .closing p {
+      font-size: 1rem;
+      color: var(--ink-mid);
+      margin-bottom: 2.5rem;
     }
-    .closing-headline.words-on .w { opacity: 1; transform: none; }
 
-    .closing p { font-size: 1rem; color: var(--ink-mid); margin-bottom: 2.5rem; }
-
-    /* =============================================
-       FOOTER
-    ============================================= */
+    /* FOOTER */
     footer {
       background: var(--ink);
-      color: rgba(255,255,255,0.38);
+      color: rgba(255,255,255,0.4);
       text-align: center;
       padding: 2rem;
       font-size: 13px;
     }
-    footer a { color: rgba(255,255,255,0.58); text-decoration: none; }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
     footer a:hover { color: var(--white); }
 
-    /* =============================================
-       SCROLL REVEAL SYSTEM
-       js-ready class added by JS so non-JS users
-       see everything immediately
-    ============================================= */
-    .js-ready .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-    .js-ready .reveal.on { opacity: 1; transform: none; }
-
-    /* Flip cards */
-    .js-ready .flip-card {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .js-ready .flip-card.on { opacity: 1; transform: none; }
-
-    /* Step rows */
-    .js-ready .step {
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 0.48s ease, transform 0.48s ease;
-    }
-    .js-ready .step.on { opacity: 1; transform: none; }
-
-    /* List items */
-    .js-ready .list-block li {
-      opacity: 0;
-      transform: translateY(9px);
-      transition: opacity 0.38s ease, transform 0.38s ease;
-    }
-    .js-ready .list-block li.on { opacity: 1; transform: none; }
-
-    /* Testimonial cards */
-    .js-ready .testi {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .js-ready .testi.on { opacity: 1; transform: none; }
-
-    /* =============================================
-       RESPONSIVE
-    ============================================= */
+    /* RESPONSIVE */
     @media (max-width: 640px) {
       section { padding: 4rem 1.25rem; }
-      nav { padding: 0.85rem 1.25rem; }
+      nav { padding: 1rem 1.25rem; }
       .hero { padding: 7rem 1.25rem 4rem; }
-      .blob-2, .blob-3 { display: none; }
-      .flip-card { height: 248px; }
-      #back-to-top { bottom: 1.25rem; right: 1.25rem; }
-      .identity::after { font-size: 18rem; }
-      .hl-em { font-size: clamp(2.6rem, 12vw, 4rem); }
     }
 
-    /* =============================================
-       REDUCED MOTION — kill all animations
-    ============================================= */
+    /* REDUCED MOTION */
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
-      .blob { animation: none !important; }
-      .hb   { animation: none !important; }
-      .spots-dot, .live-dot { animation: none !important; }
-      .rh   { animation: none !important; opacity: 1 !important; }
+      * { transition: none !important; }
     }
-
   </style>
 </head>
 <body>
 
-<!-- SCROLL PROGRESS -->
-<div id="scroll-progress"></div>
-
-<!-- BACK TO TOP -->
-<button id="back-to-top" aria-label="Back to top">↑ top</button>
-
-<!-- =============================================
-     NAV
-============================================= -->
-<nav id="site-nav">
-  <a href="#" class="nav-logo">
-    <span class="nav-logo-name">She Starts Over</span>
-    <span class="nav-logo-tag">a curated community for solopreneurs</span>
-  </a>
-  <a href="#offer" class="nav-cta" rel="noopener noreferrer">Book a call</a>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">She.Starts.Over<span class="nav-logo-sub">for solopreneurs who don't want to do it alone</span></a>
+  <a href="https://form.typeform.com/to/H4PXSWLF" target="_blank" rel="noopener noreferrer" class="nav-cta">Become a member</a>
 </nav>
 
-<!-- =============================================
-     HERO
-============================================= -->
+<!-- HERO -->
 <section class="hero">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-
   <div class="container">
-    <div class="hero-marker rh" style="--d:0ms"></div>
-
-    <div class="hero-headline">
-      <p class="hl-quiet rh" style="--d:100ms">You're building something real.</p>
-      <div>
-        <span class="hl-pre rh" style="--d:260ms">You deserve</span>
-        <em class="hl-em rh" style="--d:420ms">an inner circle</em>
-        <span class="hl-post rh" style="--d:620ms">cheering you on every step.</span>
-      </div>
-    </div>
-
-    <p class="hero-sub rh" style="--d:780ms">She Starts Over is a curated community for female solopreneurs running independent, service-based businesses — done building in isolation, and ready for genuine connection, honest conversations, and people who truly get it.</p>
-
-    <div class="hero-actions rh" style="--d:940ms">
-      <a href="#offer" class="btn-primary">Book a founding member call <span class="hb">🧡</span></a>
+    <span class="hero-eyebrow">A curated community for solopreneurs</span>
+    <h1>You're building something real.<br><em>You deserve an inner circle</em><br>cheering you on every step.</h1>
+    <p class="hero-sub">She Starts Over is a curated community for female solopreneurs running independent, service-based businesses, done building in isolation, and ready for genuine connection, honest conversations, and people who truly get it.</p>
+    <div class="hero-actions">
+      <a href="https://form.typeform.com/to/H4PXSWLF" target="_blank" rel="noopener noreferrer" class="btn-primary">Become a member 🧡</a>
       <a href="#she-connects" class="btn-secondary">Not sure yet? Experience it first →</a>
     </div>
   </div>
 </section>
 
-<!-- =============================================
-     IDENTITY
-============================================= -->
+<!-- IDENTITY -->
 <section class="identity">
   <div class="container">
-    <p class="section-label reveal">This space is made for you if...</p>
-    <h2 class="reveal">You'll recognise yourself<br>in the women here.</h2>
+    <p class="section-label">Where meaningful connections begin</p>
+    <h2>This space is made for you if...</h2>
     <div class="identity-body">
-      <p class="reveal">You've built a business around your skills and your name — coaching, marketing, branding, PR, sales funnels, or something close to it. You show up as yourself, every day, and that's exactly how you like it.</p>
-      <p class="reveal">You've tried talking to friends about your business but they support you without really understanding you. They mean well — they just don't know what it's like.</p>
-      <p class="reveal">You can't be bothered to attend another networking event because honestly — it leads nowhere. Surface-level conversations, a pile of LinkedIn connections, and you go home feeling emptier than before.</p>
-      <p class="reveal">You're not interested in "10x your revenue" energy or rooms full of people chasing the next funding round. You just want real conversations with women who get what it's like to build something solo.</p>
-      <p class="reveal">What you actually crave is genuine connection with women who understand your challenges, your vision, and your journey.</p>
+      <p>You've built a business around your skills and your name: coaching, marketing, branding, PR, sales funnels, or another business built around your expertise. You show up as yourself, every day, and that's exactly how you like it.</p>
+      <p>But sometimes you wish there were someone beside you who truly gets it, someone navigating the same highs, doubts, decisions, and challenges that come with building a business on your own.</p>
+      <p>You can't be bothered to attend another networking event because honestly, it leads nowhere. Surface-level conversations, a pile of LinkedIn connections, and you go home feeling emptier than before.</p>
+      <p>You're not interested in "10x your revenue" energy or rooms full of people chasing the next funding round. You just want real conversations with women who understand what it's like to build something of your own.</p>
+      <p>What you actually crave is genuine connection with women who understand your challenges, your vision, and your journey.</p>
     </div>
-    <p class="identity-closer reveal">In other words — you need other solopreneurs in your corner. <span class="hb">🧡</span></p>
+    <p class="identity-closer">In other words, you need other solopreneurs in your corner. 🧡</p>
   </div>
 </section>
 
-<!-- =============================================
-     SOLUTION
-============================================= -->
+<!-- SOLUTION -->
 <section class="solution">
   <div class="container">
-    <span class="section-label reveal">That's why She Starts Over exists</span>
-    <h2 class="reveal">Friendships that make<br>solo business ownership less lonely —<br>and a lot more fun.</h2>
+    <span class="section-label">That's why She Starts Over exists</span>
+    <h2>Because the right people<br>change everything.</h2>
     <div class="solution-body">
-      <p class="reveal">A small, intentional community where women running independent, service-based businesses find friendships that actually last.</p>
-      <p class="reveal">This is for women who've chosen flexibility and independence on purpose — not as a stepping stone to something bigger, but because this is the life they want.</p>
-      <p class="reveal">I keep it intimate on purpose — because genuine connection doesn't happen in big impersonal rooms. Every member is reviewed personally before joining, because the quality of the room is everything.</p>
-      <p class="reveal">I want to protect the energy and vibe we're creating together.</p>
+      <p>Because building a business feels different when you're not doing it alone.</p>
+      <p>Having a group of women you can turn to when you're overthinking a decision, doubting yourself before a launch, or questioning everything at 3 AM.</p>
+      <p>Women who understand why landing a new client feels like such a big win. Who know what it's like to carry every decision, every challenge, and every responsibility on your own.</p>
+      <p>A place where you can ask for advice, celebrate your wins, share your frustrations, and talk openly without having to explain the context first.</p>
+      <p>That's what She Starts Over is.</p>
+      <p>A small, intentional community for women running independent, service-based businesses who want genuine connection, meaningful friendships, and people in their corner.</p>
+      <p>I keep it intimate on purpose. Every member is personally reviewed before joining because the quality of the room is everything.</p>
     </div>
   </div>
 </section>
 
-<!-- =============================================
-     INCLUDED — FLIP CARDS
-============================================= -->
+<!-- INCLUDED -->
 <section class="included">
   <div class="container-wide">
-    <span class="section-label reveal">What's included</span>
-    <h2 class="reveal">Here's what being a member looks like</h2>
-
-    <div class="features-grid" id="features-grid">
-
-      <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Weekly Sessions — tap to flip">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="flip-icon">💬</div>
-            <h3>Weekly Sessions</h3>
-            <span class="flip-hint">↻ tap to explore</span>
-          </div>
-          <div class="flip-card-back">
-            <h3>Weekly Sessions</h3>
-            <p>Alternating between Idea Circles — where someone brings a real challenge and the group helps solve it — and Feedback Rounds, where you get honest input on your offer, content, or next move. Real experiences, real ideas, real momentum.</p>
-            <span class="flip-hint-back">↻ flip back</span>
-          </div>
-        </div>
+    <span class="section-label">What's inside</span>
+    <h2>Here's what being a member looks like</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">💬</div>
+        <h3>Weekly Sessions</h3>
+        <p>Alternating between Idea Circles, where someone brings a real challenge and the group helps solve it, and Feedback Rounds, where you get honest input on your offer, content, or next move. Real experiences, real ideas, real momentum.</p>
       </div>
-
-      <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Member Lounge — tap to flip">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="flip-icon">🏠</div>
-            <h3>Member Lounge</h3>
-            <span class="flip-hint">↻ tap to explore</span>
-          </div>
-          <div class="flip-card-back">
-            <h3>Member Lounge</h3>
-            <p>An ongoing space to share your weekly intentions, celebrate wins, ask questions, and support each other between sessions. The 3 AM thoughts, the small wins, the honest check-ins. This is where the day-to-day connection lives.</p>
-            <span class="flip-hint-back">↻ flip back</span>
-          </div>
-        </div>
+      <div class="feature">
+        <div class="feature-icon">🏠</div>
+        <h3>Member Lounge</h3>
+        <p>An ongoing space to share your weekly intentions, celebrate wins, ask questions, and support each other between sessions. The 3 AM thoughts, the small wins, the honest check-ins. This is where the day-to-day connection lives.</p>
       </div>
-
-      <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="She Connects — tap to flip">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="flip-icon">✨</div>
-            <h3>She Connects — Quarterly</h3>
-            <span class="flip-hint">↻ tap to explore</span>
-          </div>
-          <div class="flip-card-back">
-            <h3>She Connects</h3>
-            <p>A curated online event bringing together a wider circle of women in business. Connection with intention — not another networking event that leads nowhere.</p>
-            <span class="flip-hint-back">↻ flip back</span>
-          </div>
-        </div>
+      <div class="feature">
+        <div class="feature-icon">☕</div>
+        <h3>In-Person Gatherings</h3>
+        <p>Intimate in-person gatherings for Amsterdam-based members: brunches, dinners, and the occasional coworking session. Because some conversations are better over coffee and croissants.</p>
       </div>
-
-      <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Brunch and Meetups — tap to flip">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="flip-icon">☕</div>
-            <h3>Brunch &amp; Meetups — Amsterdam</h3>
-            <span class="flip-hint">↻ tap to explore</span>
-          </div>
-          <div class="flip-card-back">
-            <h3>Brunch &amp; Meetups</h3>
-            <p>Intimate in-person gatherings for Amsterdam-based members — brunches, dinners, and the occasional coworking session. Because some conversations are better over coffee and croissants.</p>
-            <span class="flip-hint-back">↻ flip back</span>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- =============================================
-     FOR YOU
-============================================= -->
+<!-- FOR YOU -->
 <section class="for-you">
   <div class="container">
-    <span class="section-label reveal">Is this for you?</span>
-    <h2 class="reveal">The right fit matters to us both.</h2>
+    <span class="section-label">Is this for you?</span>
+    <h2>This community is made for you if...</h2>
     <div class="two-col">
       <div class="list-block">
-        <h3 class="reveal">This is for you if</h3>
-        <ul id="list-yes">
-          <li>You run an independent, service-based business — coaching, marketing, branding, PR, sales funnels, or similar</li>
+        <h3>This is for you if</h3>
+        <ul>
+          <li>You run an independent, service-based business: coaching, marketing, branding, PR, sales funnels, or similar</li>
           <li>Your business is built around you and your personal brand, often via LinkedIn</li>
           <li>You're based in or generally available during European time zones</li>
-          <li>You've chosen this path for flexibility and alignment — not to build "the next big thing"</li>
+          <li>You've chosen this path for flexibility and alignment, not to build "the next big thing"</li>
           <li>You want real friendships, not just contacts</li>
           <li>You show up for others as much as you want them to show up for you</li>
         </ul>
       </div>
       <div class="list-block not">
-        <h3 class="reveal">This isn't for you if</h3>
-        <ul id="list-no">
+        <h3>This isn't for you if</h3>
+        <ul>
           <li>You're raising funding or scaling a tech product</li>
           <li>You're a digital nomad without a steady timezone</li>
           <li>You're looking for "exceptional girls, scale faster" energy</li>
@@ -1166,403 +714,140 @@
   </div>
 </section>
 
-<!-- =============================================
-     HOW IT WORKS
-============================================= -->
+<!-- HOW IT WORKS -->
 <section class="how">
   <div class="container">
-    <span class="section-label reveal">How it works</span>
-    <h2 class="reveal">Three steps to joining</h2>
-
-    <div class="steps-wrapper" id="steps-wrapper">
-      <div class="steps-line"></div>
-      <div class="steps">
-        <div class="step" id="step-1">
-          <div class="step-num">01</div>
-          <div class="step-body">
-            <h3>Book a call</h3>
-            <p>Click below to schedule your founding member conversation. It's just 20 minutes — relaxed, personal, no pressure.</p>
-          </div>
+    <span class="section-label">How it works</span>
+    <h2>Three steps to joining</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <h3>Apply to join</h3>
+          <p>Fill in a short application; it takes about 5 minutes. I read every one personally before getting back to you.</p>
         </div>
-        <div class="step" id="step-2">
-          <div class="step-num">02</div>
-          <div class="step-body">
-            <h3>Let's talk</h3>
-            <p>We'll have a genuine conversation about what you're building and what you're looking for. I'll share what the community looks like in practice. If it feels like a mutual fit — you're in.</p>
-          </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <h3>Let's talk</h3>
+          <p>We'll have a genuine conversation about what you're building and what you're looking for. I'll share what the community looks like in practice. If it feels like a mutual fit, you're in.</p>
         </div>
-        <div class="step" id="step-3">
-          <div class="step-num">03</div>
-          <div class="step-body">
-            <h3>Welcome home</h3>
-            <p>Once you join, you'll be welcomed into the community and introduced to your fellow founding members. This is where it begins.</p>
-          </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <h3>Welcome home</h3>
+          <p>Once you join, you'll be welcomed into the community and introduced to your fellow founding members. This is where it begins.</p>
         </div>
       </div>
     </div>
-
-    <a href="#offer" class="btn-primary reveal">Book a founding member call <span class="hb">🧡</span></a>
+    <a href="https://form.typeform.com/to/H4PXSWLF" target="_blank" rel="noopener noreferrer" class="btn-primary">Become a member 🧡</a>
   </div>
 </section>
 
-<!-- =============================================
-     FOUNDER
-============================================= -->
+<!-- FOUNDER -->
 <section class="founder">
   <div class="container">
     <div class="founder-inner">
-      <div class="founder-photo reveal">
-        <div class="founder-photo-placeholder">Your photo<br>goes here <span class="hb">🧡</span></div>
+      <div class="founder-photo">
+        <div class="founder-photo-placeholder">Your photo<br>goes here 🧡</div>
       </div>
       <div class="founder-text">
-        <span class="eyebrow reveal">Hi, I'm Urte</span>
-        <h2 class="reveal">I built this community because I needed it myself.</h2>
-        <p class="reveal">After burnout and taking time to reconnect with myself, I started my own business — and realised the thing that changed everything wasn't a course or a strategy.</p>
-        <p class="reveal">It was the right people in my corner.</p>
-        <p class="reveal">I'm a community builder at heart. I've spent years creating spaces where meaningful conversations happen, where people feel genuinely seen, and where real relationships are built.</p>
-        <p class="reveal">She Starts Over was born from my own experience of building alone — and my belief that success feels better when it's shared.</p>
+        <span class="eyebrow">Hi, I'm Urte</span>
+        <h2>A little bit about why She.Starts.Over exists</h2>
+        <p>I built She Starts Over because I truly believe in the power of building together.</p>
+        <p>When I started my own business, I quickly realised that the thing that made the biggest difference wasn't another course, strategy, or business book.</p>
+        <p>It was having the right people around me.</p>
+        <p>The people who could help me see clearly when I was stuck in my own head. The people who understood the realities of building a business and could offer perspective, encouragement, or simply remind me that I wasn't the only one figuring things out as I went.</p>
+        <p>I still remember conversations that changed the way I thought about my business and ultimately changed the direction it took.</p>
+        <p>That's why I believe so strongly in shared experience and the power of community.</p>
+        <p>I've spent years creating spaces where meaningful conversations happen, where people feel genuinely seen, and where real relationships are built. Time and again, I've seen what becomes possible when people find a place where they truly belong.</p>
+        <p>Today, more women than ever are choosing to build businesses that give them freedom, flexibility, and purpose. But even when you've chosen independence, it doesn't mean you have to do everything alone.</p>
+        <p>We all need people in our corner.</p>
+        <p>Because the journey is easier when it's shared. And the wins mean more when there's someone who truly understands what it took to achieve them.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =============================================
-     TESTIMONIALS
-============================================= -->
+<!-- TESTIMONIALS -->
 <section class="testimonials">
   <div class="container-wide">
-    <span class="section-label reveal">What members say</span>
-    <h2 class="reveal">In their own words</h2>
-    <div class="testi-grid" id="testi-grid">
+    <span class="section-label">What members say</span>
+    <h2>In their own words</h2>
+    <div class="testi-grid">
       <div class="testi">
         <div class="testi-quote">"</div>
         <p>Add your first testimonial here. Ask your workshop attendees or current community members for a short quote about what working with you has meant to them.</p>
-        <div class="testi-author">Name — Job title, Business</div>
+        <div class="testi-author">Name, Job title, Business</div>
       </div>
       <div class="testi">
         <div class="testi-quote">"</div>
         <p>A second testimonial goes here. Ask them specifically to speak to how the community or your facilitation made them feel as a solopreneur.</p>
-        <div class="testi-author">Name — Job title, Business</div>
+        <div class="testi-author">Name, Job title, Business</div>
       </div>
       <div class="testi">
         <div class="testi-quote">"</div>
         <p>A third testimonial here. Even two or three genuine sentences from real women carries enormous weight.</p>
-        <div class="testi-author">Name — Job title, Business</div>
+        <div class="testi-author">Name, Job title, Business</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =============================================
-     FOUNDING OFFER
-============================================= -->
+<!-- FOUNDING OFFER -->
 <section class="offer" id="offer">
   <div class="container">
     <p class="section-label">Founding membership</p>
-    <div class="spots-badge">
-      <span class="spots-dot"></span>
-      Only 10 founding spots
-    </div>
     <h2>Become a founding member</h2>
-    <p class="offer-sub">She Starts Over is opening to a small founding group of 10 women. Founding members receive a special rate locked in for their first 6 months — as a thank you for being among the first through the door.</p>
-    <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" class="btn-primary">Book your founding member call <span class="hb">🧡</span></a>
-    <p class="offer-note">A relaxed 20 minute conversation. No pressure — just a chance to see if it feels right for both of us.</p>
+    <p class="offer-sub">She Starts Over is opening to a small founding group of 10 women. Founding members receive a special rate locked in for their first 6 months, as a thank you for being among the first through the door.</p>
+    <a href="https://form.typeform.com/to/H4PXSWLF" target="_blank" rel="noopener noreferrer" class="btn-primary">Become a member 🧡</a>
+    <p class="offer-note">A short application. I read every one personally and will be in touch within a few days.</p>
   </div>
 </section>
 
-<!-- =============================================
-     SHE CONNECTS
-============================================= -->
+<!-- SHE CONNECTS -->
 <section class="she-connects" id="she-connects">
   <div class="container-wide">
     <div class="she-connects-inner">
       <div>
-        <span class="section-label reveal">Not sure yet?</span>
-        <h2 class="reveal">Experience She Starts Over<br>in person first.</h2>
-        <p class="reveal">She Connects is a curated online event — the best way to feel the energy of the community before committing to membership.</p>
-        <p class="reveal">Not another networking event. A genuine, curated experience, intentionally designed to create real connections.</p>
+        <span class="section-label">Not sure yet?</span>
+        <h2>Experience She Starts Over in person first.</h2>
+        <p>She Connects is a curated online event and the best way to feel the energy of the community before committing to membership.</p>
+        <p>Not another networking event. A genuine, curated experience, intentionally designed to create real connections.</p>
+        <a href="https://www.linkedin.com/in/urte-pocs-289763132/" target="_blank" rel="noopener noreferrer" class="linkedin-connect">
+          <span class="linkedin-connect-avatar">U</span>
+          <span class="linkedin-connect-text">
+            <span class="linkedin-connect-name">Urte Pocs</span>
+            <span class="linkedin-connect-cta">Come say hello on LinkedIn ↗</span>
+          </span>
+          <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
       </div>
-      <div class="event-card reveal">
-        <div class="event-card-label">
-          <span class="live-dot"></span>Upcoming event
-        </div>
+      <div class="event-card">
+        <div class="event-card-label">Upcoming event</div>
         <h3>She Connects</h3>
         <div class="event-detail">August 19th · 12PM CET · Online · €25</div>
-        <div class="event-countdown" id="countdown"></div>
-        <a href="https://eventbrite.com" target="_blank" rel="noopener noreferrer" class="btn-outline">Reserve your spot →</a>
+        <a href="https://www.eventbrite.com/e/registratie-she-connects-1991274089405?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer" class="btn-outline">Reserve your spot →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =============================================
-     CLOSING
-============================================= -->
+<!-- CLOSING -->
 <section class="closing">
   <div class="container">
-    <h2 class="closing-headline" id="closing-headline">
-      <span class="w" style="--wi:1">One</span> <span class="w" style="--wi:2">meaningful</span> <span class="w" style="--wi:3">conversation</span> <span class="w" style="--wi:4">can</span><br>
-      <span class="w" style="--wi:5">change</span> <span class="w" style="--wi:6">the</span> <span class="w" style="--wi:7">trajectory</span> <span class="w" style="--wi:8">of</span> <em><span class="w" style="--wi:9">your</span></em> <span class="w" style="--wi:10">business.</span>
-    </h2>
-    <p class="reveal">You don't have to build alone.</p>
-    <a href="#offer" class="btn-primary reveal">Book a founding member call <span class="hb">🧡</span></a>
+    <h2>One meaningful conversation can<br>change the trajectory of <em>your</em> business.</h2>
+    <p>You don't have to build it alone.</p>
+    <a href="https://form.typeform.com/to/H4PXSWLF" target="_blank" rel="noopener noreferrer" class="btn-primary">Become a member 🧡</a>
   </div>
 </section>
 
-<!-- =============================================
-     FOOTER
-============================================= -->
+<!-- FOOTER -->
 <footer>
-  <p>She Starts Over © 2026 &nbsp;·&nbsp; For female solopreneurs who don't want to do it alone. <span class="hb">🧡</span> &nbsp;·&nbsp; <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+  <p>She Starts Over &copy; 2026 &nbsp;&middot;&nbsp; For female solopreneurs who don't want to do it alone. 🧡 &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/urte-pocs-289763132/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
 </footer>
-
-<!-- =============================================
-     JAVASCRIPT — all deferred, passive, minimal
-============================================= -->
-<script>
-(function () {
-  'use strict';
-
-  // ── Flag so CSS reveal system activates ──
-  document.body.classList.add('js-ready');
-
-  // ── Shared DOM refs ──
-  const progressBar = document.getElementById('scroll-progress');
-  const nav         = document.getElementById('site-nav');
-  const btt         = document.getElementById('back-to-top');
-
-  // ── ONE scroll listener handles all scroll UI ──
-  window.addEventListener('scroll', function () {
-    var y   = window.scrollY;
-    var max = document.documentElement.scrollHeight - window.innerHeight;
-
-    // Progress bar (width % via inline style — no layout, GPU-free)
-    if (max > 0) progressBar.style.width = (y / max * 100).toFixed(1) + '%';
-
-    // Nav shadow
-    if (y > 60) nav.classList.add('scrolled');
-    else         nav.classList.remove('scrolled');
-
-    // Back-to-top
-    if (y > window.innerHeight * 0.55) btt.classList.add('is-visible');
-    else                                btt.classList.remove('is-visible');
-
-  }, { passive: true });
-
-  // ── Back to top ──
-  btt.addEventListener('click', function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  // ── FLIP CARDS + Web Audio SFX ──
-  var audioCtx = null;
-
-  function playFlip() {
-    try {
-      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      var sr  = audioCtx.sampleRate;
-      var dur = 0.11;
-      var len = Math.floor(sr * dur);
-      var buf = audioCtx.createBuffer(1, len, sr);
-      var d   = buf.getChannelData(0);
-      for (var i = 0; i < len; i++) {
-        // White noise with fast exponential decay — paper card sound
-        d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.2) * 0.26;
-      }
-      var src = audioCtx.createBufferSource();
-      src.buffer = buf;
-      var flt = audioCtx.createBiquadFilter();
-      flt.type = 'bandpass';
-      flt.frequency.value = 3800;
-      flt.Q.value = 0.55;
-      var gain = audioCtx.createGain();
-      gain.gain.setValueAtTime(0.55, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
-      src.connect(flt);
-      flt.connect(gain);
-      gain.connect(audioCtx.destination);
-      src.start();
-    } catch (e) { /* silent fail — audio blocked or unsupported */ }
-  }
-
-  document.querySelectorAll('.flip-card').forEach(function (card) {
-    function toggle() {
-      var flipped = card.classList.toggle('flipped');
-      card.setAttribute('aria-pressed', String(flipped));
-      playFlip();
-    }
-    card.addEventListener('click', toggle);
-    card.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-    });
-  });
-
-  // ── INTERSECTION OBSERVER FACTORY ──
-  // Single factory to avoid duplicating options
-  function makeObserver(cb, threshold) {
-    return new IntersectionObserver(cb, { threshold: threshold || 0.12 });
-  }
-
-  // ── General .reveal elements ──
-  var revealObs = makeObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('on');
-        revealObs.unobserve(entry.target);
-      }
-    });
-  });
-  document.querySelectorAll('.reveal').forEach(function (el) { revealObs.observe(el); });
-
-  // ── Identity closer underline ──
-  var closer = document.querySelector('.identity-closer');
-  if (closer) {
-    var closerObs = makeObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('line-on');
-          closerObs.unobserve(entry.target);
-        }
-      });
-    }, 0.5);
-    closerObs.observe(closer);
-  }
-
-  // ── Flip cards — stagger on scroll ──
-  var grid = document.getElementById('features-grid');
-  if (grid) {
-    var gridObs = makeObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.flip-card').forEach(function (card, i) {
-            setTimeout(function () { card.classList.add('on'); }, i * 115);
-          });
-          gridObs.unobserve(entry.target);
-        }
-      });
-    }, 0.08);
-    gridObs.observe(grid);
-  }
-
-  // ── Steps — stagger + connector line ──
-  var stepsWrap = document.getElementById('steps-wrapper');
-  if (stepsWrap) {
-    var stepsObs = makeObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          // Draw connector line
-          entry.target.classList.add('steps-on');
-          // Stagger step rows
-          entry.target.querySelectorAll('.step').forEach(function (step, i) {
-            setTimeout(function () { step.classList.add('on'); }, i * 145);
-          });
-          stepsObs.unobserve(entry.target);
-        }
-      });
-    }, 0.1);
-    stepsObs.observe(stepsWrap);
-  }
-
-  // ── List items — stagger ──
-  ['list-yes', 'list-no'].forEach(function (id) {
-    var list = document.getElementById(id);
-    if (!list) return;
-    var listObs = makeObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('li').forEach(function (li, i) {
-            setTimeout(function () { li.classList.add('on'); }, i * 72);
-          });
-          listObs.unobserve(entry.target);
-        }
-      });
-    }, 0.08);
-    listObs.observe(list);
-  });
-
-  // ── Testimonials — stagger ──
-  var testiGrid = document.getElementById('testi-grid');
-  if (testiGrid) {
-    var testiObs = makeObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.testi').forEach(function (t, i) {
-            setTimeout(function () { t.classList.add('on'); }, i * 105);
-          });
-          testiObs.unobserve(entry.target);
-        }
-      });
-    }, 0.08);
-    testiObs.observe(testiGrid);
-  }
-
-  // ── Closing headline — word reveal ──
-  var closingH2 = document.getElementById('closing-headline');
-  if (closingH2) {
-    var wordObs = makeObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('words-on');
-          wordObs.unobserve(entry.target);
-        }
-      });
-    }, 0.3);
-    wordObs.observe(closingH2);
-  }
-
-  // ── Countdown timer ──
-  var countdownEl = document.getElementById('countdown');
-  if (countdownEl) {
-    var eventDate = new Date('2026-08-19T12:00:00+02:00');
-    function tick() {
-      var diff = eventDate - Date.now();
-      if (diff <= 0) { countdownEl.textContent = 'Happening now ✨'; return; }
-      var d = Math.floor(diff / 86400000);
-      var h = Math.floor(diff % 86400000 / 3600000);
-      var m = Math.floor(diff % 3600000  / 60000);
-      var s = Math.floor(diff % 60000    / 1000);
-      countdownEl.textContent = d + 'd · ' + h + 'h · ' + m + 'm · ' + s + 's';
-    }
-    tick();
-    setInterval(tick, 1000);
-  }
-
-  // ── Cursor glow — desktop & no-reduced-motion only ──
-  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var hasFinePointer = window.matchMedia('(pointer: fine)').matches;
-
-  if (hasFinePointer && !prefersReduced) {
-    var glow = document.createElement('div');
-    glow.id = 'cursor-glow';
-    document.body.appendChild(glow);
-
-    var mx = -1000, my = -1000;
-    var cx = -1000, cy = -1000;
-    var HALF = 170; // half of 340px
-
-    document.addEventListener('mousemove', function (e) {
-      mx = e.clientX;
-      my = e.clientY;
-    }, { passive: true });
-
-    function glowLoop() {
-      // Smooth lag follow
-      cx += (mx - cx) * 0.09;
-      cy += (my - cy) * 0.09;
-      glow.style.transform = 'translate(' + (cx - HALF).toFixed(1) + 'px,' + (cy - HALF).toFixed(1) + 'px)';
-      requestAnimationFrame(glowLoop);
-    }
-    requestAnimationFrame(glowLoop);
-  }
-
-  // ── Offset heartbeat animations so they don't all pulse in sync ──
-  document.querySelectorAll('.hb').forEach(function (el, i) {
-    el.style.animationDelay = (i * 0.55) + 's';
-  });
-
-}());
-</script>
 
 </body>
 </html>

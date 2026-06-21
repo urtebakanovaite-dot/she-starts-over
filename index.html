@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#FDF8F5" />
   <meta name="description" content="She Starts Over is a curated community for female solopreneurs done building alone. Real friendships. Honest conversations. Women who get it." />
-  <title>She Starts Over | For Female Solopreneurs Who Don't Want to Do It Alone</title>
+  <title>She Starts Over — For Female Solopreneurs Who Don't Want to Do It Alone</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%236B1E2E'/><text x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>S</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -962,57 +962,155 @@
       .hl-em { font-size: clamp(2.6rem, 12vw, 4rem); }
     }
 
-    /* LINKEDIN CONNECT CARD */
-    .linkedin-connect {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.85rem;
-      margin-top: 1.6rem;
-      padding: 0.8rem 1.1rem;
-      background: var(--white);
-      border: 1px solid var(--divider);
-      border-radius: 6px;
-      text-decoration: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      max-width: 100%;
+    /* === HERO — breathing room now headline is solo === */
+    .hl-em { margin-bottom: 1.2rem; }
+
+    /* === IDENTITY PULL QUOTE === */
+    .identity-pull {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+      font-weight: 500;
+      color: var(--blush);
+      line-height: 1.45;
+      border: none;
+      margin: 2.2rem 0 1.8rem;
+      padding: 0;
+      max-width: 480px;
+      position: relative;
     }
-    .linkedin-connect:hover {
-      border-color: var(--terracotta);
-      box-shadow: 0 3px 14px rgba(107,30,46,0.09);
+    .identity-pull::before {
+      content: '\201C';
+      font-size: 3rem;
+      line-height: 0;
+      vertical-align: -0.55rem;
+      margin-right: 0.15rem;
+      color: rgba(255,255,255,0.25);
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* === PHOTO BREAK SLOTS === */
+    .photo-break {
+      background: var(--blush);
+      padding: 0 2rem;
+    }
+    .photo-break--wide {
+      background: var(--ink);
+      padding: 0;
+    }
+    .photo-break-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 0;
+    }
+    .photo-break--wide .photo-break-inner {
+      max-width: 100%;
+      padding: 0;
+    }
+    .photo-break-slot {
+      width: 100%;
+      height: 320px;
+      border-radius: 6px;
+      background: var(--divider);
+      border: 2px dashed var(--terracotta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.55;
+    }
+    .photo-break-slot--wide {
+      height: 420px;
+      border-radius: 0;
+      border: none;
+      background: rgba(255,255,255,0.06);
+      opacity: 1;
+    }
+    .photo-break-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+    .photo-break--wide .photo-break-label { color: rgba(255,255,255,0.3); }
+
+    /* === FOUNDER PHOTO — styled monogram placeholder === */
+    .photo-placeholder-monogram {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: linear-gradient(145deg, var(--blush) 0%, var(--divider) 100%);
+    }
+    .photo-mono-letter {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--burgundy);
+      opacity: 0.35;
+      line-height: 1;
+    }
+    .photo-mono-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+
+    /* === LINKEDIN MONOGRAM === */
+    .linkedin-monogram {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
     }
     .linkedin-connect-avatar {
+      position: relative;
       width: 34px; height: 34px;
       border-radius: 50%;
       background: var(--burgundy);
-      color: var(--white);
-      font-size: 13px;
-      font-weight: 600;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
-    .linkedin-connect-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+    .linkedin-connect-avatar::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(107,30,46,0.22);
     }
-    .linkedin-connect-name {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--ink);
-      line-height: 1.2;
-    }
-    .linkedin-connect-cta {
+
+    /* === ACCEPTING BADGE === */
+    .accepting-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 100px;
+      padding: 0.42rem 1rem;
       font-size: 12px;
-      color: var(--terracotta);
-      font-style: italic;
-      line-height: 1.2;
+      color: rgba(255,255,255,0.78);
+      letter-spacing: 0.06em;
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      transform: translateX(-12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
-    .linkedin-icon {
-      color: var(--ink-light);
+    .accepting-badge.badge-on { opacity: 1; transform: none; }
+    .accepting-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #7CBA7A;
       flex-shrink: 0;
-      margin-left: 0.4rem;
+      animation: pdot 2.2s ease-in-out infinite;
     }
 
     /* =============================================
@@ -1044,10 +1142,10 @@
 ============================================= -->
 <nav id="site-nav">
   <a href="#" class="nav-logo">
-    <span class="nav-logo-name">She.Starts.Over</span>
-    <span class="nav-logo-tag">for solopreneurs who don't want to do it alone</span>
+    <span class="nav-logo-name">She Starts Over</span>
+    <span class="nav-logo-tag">a curated community for solopreneurs</span>
   </a>
-  <a href="https://form.typeform.com/to/H4PXSWLF" target="_blank" rel="noopener noreferrer" class="nav-cta">Become a member</a>
+  <a href="#offer" class="nav-cta" rel="noopener noreferrer">Book a call</a>
 </nav>
 
 <!-- =============================================
@@ -1062,18 +1160,13 @@
     <div class="hero-marker rh" style="--d:0ms"></div>
 
     <div class="hero-headline">
-      <p class="hl-quiet rh" style="--d:100ms">You're building something real.</p>
-      <div>
-        <span class="hl-pre rh" style="--d:260ms">You deserve</span>
-        <em class="hl-em rh" style="--d:420ms">an inner circle</em>
-        <span class="hl-post rh" style="--d:620ms">cheering you on every step.</span>
-      </div>
+      <em class="hl-em rh" style="--d:100ms">your inner circle</em>
     </div>
 
-    <p class="hero-sub rh" style="--d:780ms">She Starts Over is a curated community for female solopreneurs running independent, service-based businesses, done building in isolation, and ready for genuine connection, honest conversations, and people who truly get it.</p>
+    <p class="hero-sub rh" style="--d:280ms">Real connections. Honest conversations. Women who truly get it.</p>
 
-    <div class="hero-actions rh" style="--d:940ms">
-      <a href="https://form.typeform.com/to/H4PXSWLF" target="_blank" rel="noopener noreferrer" class="btn-primary">Become a member <span class="hb">🧡</span></a>
+    <div class="hero-actions rh" style="--d:460ms">
+      <a href="#offer" class="btn-primary">Book a founding member call <span class="hb">🧡</span></a>
       <a href="#she-connects" class="btn-secondary">Not sure yet? Experience it first →</a>
     </div>
   </div>
@@ -1084,16 +1177,19 @@
 ============================================= -->
 <section class="identity">
   <div class="container">
-    <p class="section-label reveal">Where meaningful connections begin</p>
-    <h2 class="reveal">This space is made for you if...</h2>
+    <p class="section-label reveal">This space is made for you if...</p>
+    <h2 class="reveal">You'll recognise yourself<br>in the women here.</h2>
     <div class="identity-body">
-      <p class="reveal">You've built a business around your skills and your name: coaching, marketing, branding, PR, sales funnels, or another business built around your expertise. You show up as yourself, every day, and that's exactly how you like it.</p>
-      <p class="reveal">But sometimes you wish there were someone beside you who truly gets it, someone navigating the same highs, doubts, decisions, and challenges that come with building a business on your own.</p>
-      <p class="reveal">You can't be bothered to attend another networking event because honestly, it leads nowhere. Surface-level conversations, a pile of LinkedIn connections, and you go home feeling emptier than before.</p>
-      <p class="reveal">You're not interested in "10x your revenue" energy or rooms full of people chasing the next funding round. You just want real conversations with women who understand what it's like to build something of your own.</p>
+      <p class="reveal">You've built a business around your skills and your name — coaching, marketing, branding, PR, sales funnels, or something close to it. You show up as yourself, every day, and that's exactly how you like it.</p>
+      <p class="reveal">You've tried talking to friends about your business but they support you without really understanding you. They mean well — they just don't know what it's like.</p>
+      <p class="reveal">You can't be bothered to attend another networking event because honestly — it leads nowhere. Surface-level conversations, a pile of LinkedIn connections, and you go home feeling emptier than before.</p>
+      <p class="reveal">You're not interested in "10x your revenue" energy or rooms full of people chasing the next funding round. You just want real conversations with women who get what it's like to build something solo.</p>
       <p class="reveal">What you actually crave is genuine connection with women who understand your challenges, your vision, and your journey.</p>
     </div>
-    <p class="identity-closer reveal">In other words, you need other solopreneurs in your corner. <span class="hb">🧡</span></p>
+    <blockquote class="identity-pull reveal">
+      One conversation can change the direction of everything.
+    </blockquote>
+    <p class="identity-closer reveal">In other words — you need other solopreneurs in your corner. <span class="hb">🧡</span></p>
   </div>
 </section>
 
@@ -1103,25 +1199,33 @@
 <section class="solution">
   <div class="container">
     <span class="section-label reveal">That's why She Starts Over exists</span>
-    <h2 class="reveal">Because the right people<br>change everything.</h2>
+    <h2 class="reveal">Friendships that make<br>solo business ownership less lonely —<br>and a lot more fun.</h2>
     <div class="solution-body">
       <p class="reveal">Because building a business feels different when you're not doing it alone.</p>
       <p class="reveal">Having a group of women you can turn to when you're overthinking a decision, doubting yourself before a launch, or questioning everything at 3 AM.</p>
       <p class="reveal">Women who understand why landing a new client feels like such a big win. Who know what it's like to carry every decision, every challenge, and every responsibility on your own.</p>
-      <p class="reveal">A place where you can ask for advice, celebrate your wins, share your frustrations, and talk openly without having to explain the context first.</p>
-      <p class="reveal">That's what She Starts Over is.</p>
-      <p class="reveal">A small, intentional community for women running independent, service-based businesses who want genuine connection, meaningful friendships, and people in their corner.</p>
-      <p class="reveal">I keep it intimate on purpose. Every member is personally reviewed before joining because the quality of the room is everything.</p>
     </div>
   </div>
 </section>
+
+<!-- =============================================
+     PHOTO BREAK B — laptop / detail shot
+============================================= -->
+<!-- PHOTO SLOT B: Close-up detail — laptop on desk, or hands holding coffee cup. No face needed. -->
+<div class="photo-break" id="photo-break-b">
+  <div class="photo-break-inner">
+    <div class="photo-break-slot">
+      <span class="photo-break-label">Photo coming soon</span>
+    </div>
+  </div>
+</div>
 
 <!-- =============================================
      INCLUDED — FLIP CARDS
 ============================================= -->
 <section class="included">
   <div class="container-wide">
-    <span class="section-label reveal">What's inside</span>
+    <span class="section-label reveal">What's included</span>
     <h2 class="reveal">Here's what being a member looks like</h2>
 
     <div class="features-grid" id="features-grid">
@@ -1135,7 +1239,7 @@
           </div>
           <div class="flip-card-back">
             <h3>Weekly Sessions</h3>
-            <p>Alternating between Idea Circles, where someone brings a real challenge and the group helps solve it, and Feedback Rounds, where you get honest input on your offer, content, or next move. Real experiences, real ideas, real momentum.</p>
+            <p>Alternating between Idea Circles — where someone brings a real challenge and the group helps solve it — and Feedback Rounds, where you get honest input on your offer, content, or next move. Real experiences, real ideas, real momentum.</p>
             <span class="flip-hint-back">↻ flip back</span>
           </div>
         </div>
@@ -1156,17 +1260,31 @@
         </div>
       </div>
 
-
-      <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="In-Person Gatherings — tap to flip">
+      <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="She Connects — tap to flip">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <div class="flip-icon">☕</div>
-            <h3>In-Person Gatherings</h3>
+            <div class="flip-icon">✨</div>
+            <h3>She Connects — Quarterly</h3>
             <span class="flip-hint">↻ tap to explore</span>
           </div>
           <div class="flip-card-back">
-            <h3>In-Person Gatherings</h3>
-            <p>Intimate in-person gatherings for Amsterdam-based members: brunches, dinners, and the occasional coworking session. Because some conversations are better over coffee and croissants.</p>
+            <h3>She Connects</h3>
+            <p>A curated online event bringing together a wider circle of women in business. Connection with intention — not another networking event that leads nowhere.</p>
+            <span class="flip-hint-back">↻ flip back</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Brunch and Meetups — tap to flip">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="flip-icon">☕</div>
+            <h3>Brunch &amp; Meetups — Amsterdam</h3>
+            <span class="flip-hint">↻ tap to explore</span>
+          </div>
+          <div class="flip-card-back">
+            <h3>Brunch &amp; Meetups</h3>
+            <p>Intimate in-person gatherings for Amsterdam-based members — brunches, dinners, and the occasional coworking session. Because some conversations are better over coffee and croissants.</p>
             <span class="flip-hint-back">↻ flip back</span>
           </div>
         </div>
@@ -1182,15 +1300,15 @@
 <section class="for-you">
   <div class="container">
     <span class="section-label reveal">Is this for you?</span>
-    <h2 class="reveal">This community is made for you if...</h2>
+    <h2 class="reveal">The right fit matters to us both.</h2>
     <div class="two-col">
       <div class="list-block">
         <h3 class="reveal">This is for you if</h3>
         <ul id="list-yes">
-          <li>You run an independent, service-based business: coaching, marketing, branding, PR, sales funnels, or similar</li>
+          <li>You run an independent, service-based business — coaching, marketing, branding, PR, sales funnels, or similar</li>
           <li>Your business is built around you and your personal brand, often via LinkedIn</li>
           <li>You're based in or generally available during European time zones</li>
-          <li>You've chosen this path for flexibility and alignment, not to build "the next big thing"</li>
+          <li>You've chosen this path for flexibility and alignment — not to build "the next big thing"</li>
           <li>You want real friendships, not just contacts</li>
           <li>You show up for others as much as you want them to show up for you</li>
         </ul>
@@ -1222,15 +1340,15 @@
         <div class="step" id="step-1">
           <div class="step-num">01</div>
           <div class="step-body">
-            <h3>Apply to join</h3>
-            <p>Fill in a short application; it takes about 5 minutes. I read every one personally before getting back to you.</p>
+            <h3>Book a call</h3>
+            <p>Click below to schedule your founding member conversation. It's just 20 minutes — relaxed, personal, no pressure.</p>
           </div>
         </div>
         <div class="step" id="step-2">
           <div class="step-num">02</div>
           <div class="step-body">
             <h3>Let's talk</h3>
-            <p>We'll have a genuine conversation about what you're building and what you're looking for. I'll share what the community looks like in practice. If it feels like a mutual fit, you're in.</p>
+            <p>We'll have a genuine conversation about what you're building and what you're looking for. I'll share what the community looks like in practice. If it feels like a mutual fit — you're in.</p>
           </div>
         </div>
         <div class="step" id="step-3">
@@ -1243,7 +1361,7 @@
       </div>
     </div>
 
-    <a href="https://form.typeform.com/to/H4PXSWLF" target="_blank" rel="noopener noreferrer" class="btn-primary reveal">Become a member <span class="hb">🧡</span></a>
+    <a href="#offer" class="btn-primary reveal">Book a founding member call <span class="hb">🧡</span></a>
   </div>
 </section>
 
@@ -1254,21 +1372,20 @@
   <div class="container">
     <div class="founder-inner">
       <div class="founder-photo reveal">
-        <div class="founder-photo-placeholder">Your photo<br>goes here <span class="hb">🧡</span></div>
+        <!-- PHOTO SLOT A: Portrait of Urte (vertical, warm/natural) -->
+        <div class="photo-placeholder-monogram">
+          <span class="photo-mono-letter">U</span>
+          <span class="photo-mono-label">Photo coming soon</span>
+        </div>
       </div>
       <div class="founder-text">
         <span class="eyebrow reveal">Hi, I'm Urte</span>
         <h2 class="reveal">A little bit about why She.Starts.Over exists</h2>
         <p class="reveal">I built She Starts Over because I truly believe in the power of building together.</p>
-        <p class="reveal">When I started my own business, I quickly realised that the thing that made the biggest difference wasn't another course, strategy, or business book.</p>
-        <p class="reveal">It was having the right people around me.</p>
-        <p class="reveal">The people who could help me see clearly when I was stuck in my own head. The people who understood the realities of building a business and could offer perspective, encouragement, or simply remind me that I wasn't the only one figuring things out as I went.</p>
+        <p class="reveal">When I started my own business, I quickly realised that the thing that made the biggest difference wasn't another course, strategy, or business book. It was having the right people around me.</p>
         <p class="reveal">I still remember conversations that changed the way I thought about my business and ultimately changed the direction it took.</p>
-        <p class="reveal">That's why I believe so strongly in shared experience and the power of community.</p>
         <p class="reveal">I've spent years creating spaces where meaningful conversations happen, where people feel genuinely seen, and where real relationships are built. Time and again, I've seen what becomes possible when people find a place where they truly belong.</p>
-        <p class="reveal">Today, more women than ever are choosing to build businesses that give them freedom, flexibility, and purpose. But even when you've chosen independence, it doesn't mean you have to do everything alone.</p>
-        <p class="reveal">We all need people in our corner.</p>
-        <p class="reveal">Because the journey is easier when it's shared. And the wins mean more when there's someone who truly understands what it took to achieve them.</p>
+        <p class="reveal">We all need people in our corner. Because the journey is easier when it's shared. And the wins mean more when there's someone who truly understands what it took to achieve them.</p>
       </div>
     </div>
   </div>
@@ -1285,26 +1402,39 @@
       <div class="testi">
         <div class="testi-quote">"</div>
         <p>Add your first testimonial here. Ask your workshop attendees or current community members for a short quote about what working with you has meant to them.</p>
-        <div class="testi-author">Name, Job title, Business</div>
+        <div class="testi-author">Name — Job title, Business</div>
       </div>
       <div class="testi">
         <div class="testi-quote">"</div>
         <p>A second testimonial goes here. Ask them specifically to speak to how the community or your facilitation made them feel as a solopreneur.</p>
-        <div class="testi-author">Name, Job title, Business</div>
+        <div class="testi-author">Name — Job title, Business</div>
       </div>
       <div class="testi">
         <div class="testi-quote">"</div>
         <p>A third testimonial here. Even two or three genuine sentences from real women carries enormous weight.</p>
-        <div class="testi-author">Name, Job title, Business</div>
+        <div class="testi-author">Name — Job title, Business</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- =============================================
+     PHOTO BREAK C — group / co-working shot
+============================================= -->
+<!-- PHOTO SLOT C: Urte + other women co-working or laughing together. Full-width, warm crop. -->
+<div class="photo-break photo-break--wide" id="photo-break-c">
+  <div class="photo-break-inner">
+    <div class="photo-break-slot photo-break-slot--wide">
+      <span class="photo-break-label">Photo coming soon</span>
+    </div>
+  </div>
+</div>
+
+<!-- =============================================
      FOUNDING OFFER
 ============================================= -->
 <section class="offer" id="offer">
+  <div class="accepting-badge" id="accepting-badge"><span class="accepting-dot"></span>Accepting applications</div>
   <div class="container">
     <p class="section-label">Founding membership</p>
     <div class="spots-badge">
@@ -1312,9 +1442,9 @@
       Only 10 founding spots
     </div>
     <h2>Become a founding member</h2>
-    <p class="offer-sub">She Starts Over is opening to a small founding group of 10 women. Founding members receive a special rate locked in for their first 6 months, as a thank you for being among the first through the door.</p>
-    <a href="https://form.typeform.com/to/H4PXSWLF" target="_blank" rel="noopener noreferrer" class="btn-primary">Become a member <span class="hb">🧡</span></a>
-    <p class="offer-note">A short application. I read every one personally and will be in touch within a few days.</p>
+    <p class="offer-sub">She Starts Over is opening to a small founding group of 10 women. Founding members receive a special rate locked in for their first 6 months — as a thank you for being among the first through the door.</p>
+    <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" class="btn-primary">Book your founding member call <span class="hb">🧡</span></a>
+    <p class="offer-note">A relaxed 20 minute conversation. No pressure — just a chance to see if it feels right for both of us.</p>
   </div>
 </section>
 
@@ -1327,25 +1457,17 @@
       <div>
         <span class="section-label reveal">Not sure yet?</span>
         <h2 class="reveal">Experience She Starts Over<br>in person first.</h2>
-        <p class="reveal">She Connects is a curated online event and the best way to feel the energy of the community before committing to membership.</p>
+        <p class="reveal">She Connects is a curated online event — the best way to feel the energy of the community before committing to membership.</p>
         <p class="reveal">Not another networking event. A genuine, curated experience, intentionally designed to create real connections.</p>
-        <a href="https://www.linkedin.com/in/urte-pocs-289763132/" target="_blank" rel="noopener noreferrer" class="linkedin-connect">
-          <span class="linkedin-connect-avatar">U</span>
-          <span class="linkedin-connect-text">
-            <span class="linkedin-connect-name">Urte Pocs</span>
-            <span class="linkedin-connect-cta">Come say hello on LinkedIn ↗</span>
-          </span>
-          <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
       </div>
-      <div class="event-card reveal">
+      <div class="event-card reveal" id="event-card-ambient">
         <div class="event-card-label">
           <span class="live-dot"></span>Upcoming event
         </div>
         <h3>She Connects</h3>
         <div class="event-detail">August 19th · 12PM CET · Online · €25</div>
         <div class="event-countdown" id="countdown"></div>
-        <a href="https://www.eventbrite.com/e/registratie-she-connects-1991274089405?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer" class="btn-outline">Reserve your spot →</a>
+        <a href="https://eventbrite.com" target="_blank" rel="noopener noreferrer" class="btn-outline">Reserve your spot →</a>
       </div>
     </div>
   </div>
@@ -1360,8 +1482,8 @@
       <span class="w" style="--wi:1">One</span> <span class="w" style="--wi:2">meaningful</span> <span class="w" style="--wi:3">conversation</span> <span class="w" style="--wi:4">can</span><br>
       <span class="w" style="--wi:5">change</span> <span class="w" style="--wi:6">the</span> <span class="w" style="--wi:7">trajectory</span> <span class="w" style="--wi:8">of</span> <em><span class="w" style="--wi:9">your</span></em> <span class="w" style="--wi:10">business.</span>
     </h2>
-    <p class="reveal">You don't have to build it alone.</p>
-    <a href="https://form.typeform.com/to/H4PXSWLF" target="_blank" rel="noopener noreferrer" class="btn-primary reveal">Become a member <span class="hb">🧡</span></a>
+    <p class="reveal">You don't have to build alone.</p>
+    <a href="#offer" class="btn-primary reveal">Book a founding member call <span class="hb">🧡</span></a>
   </div>
 </section>
 
@@ -1369,7 +1491,7 @@
      FOOTER
 ============================================= -->
 <footer>
-  <p>She Starts Over © 2026 &nbsp;·&nbsp; For female solopreneurs who don't want to do it alone. <span class="hb">🧡</span> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/urte-pocs-289763132/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+  <p>She Starts Over © 2026 &nbsp;·&nbsp; For female solopreneurs who don't want to do it alone. <span class="hb">🧡</span> &nbsp;·&nbsp; <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
 </footer>
 
 <!-- =============================================
@@ -1616,6 +1738,79 @@
   document.querySelectorAll('.hb').forEach(function (el, i) {
     el.style.animationDelay = (i * 0.55) + 's';
   });
+
+  // ── Accepting badge — slides in when offer section enters view ──
+  var badge = document.getElementById('accepting-badge');
+  if (badge) {
+    var badgeObs = makeObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          setTimeout(function () { badge.classList.add('badge-on'); }, 200);
+          badgeObs.unobserve(entry.target);
+        }
+      });
+    }, 0.2);
+    badgeObs.observe(document.getElementById('offer'));
+  }
+
+  // ── Ambient café hum on She Connects event card hover ──
+  // Generative warm noise: low-pass filtered, very quiet (gain 0.018)
+  // Fades in on mouseenter, fades out on mouseleave
+  var ambientCard = document.getElementById('event-card-ambient');
+  if (ambientCard && hasFinePointer && !prefersReduced) {
+    var ambCtx = null;
+    var ambGain = null;
+    var ambSrc = null;
+    var ambFading = false;
+
+    function buildAmbient() {
+      if (!ambCtx) {
+        ambCtx = new (window.AudioContext || window.webkitAudioContext)();
+        // Long looping noise buffer — 4 seconds
+        var sr  = ambCtx.sampleRate;
+        var len = sr * 4;
+        var buf = ambCtx.createBuffer(1, len, sr);
+        var d   = buf.getChannelData(0);
+        for (var i = 0; i < len; i++) {
+          d[i] = (Math.random() * 2 - 1);
+        }
+        var flt = ambCtx.createBiquadFilter();
+        flt.type = 'lowpass';
+        flt.frequency.value = 320; // warm, muffled room feel
+        flt.Q.value = 0.5;
+
+        ambGain = ambCtx.createGain();
+        ambGain.gain.setValueAtTime(0, ambCtx.currentTime);
+
+        ambSrc = ambCtx.createBufferSource();
+        ambSrc.buffer = buf;
+        ambSrc.loop = true;
+        ambSrc.connect(flt);
+        flt.connect(ambGain);
+        ambGain.connect(ambCtx.destination);
+        ambSrc.start();
+      }
+    }
+
+    ambientCard.addEventListener('mouseenter', function () {
+      try {
+        buildAmbient();
+        if (ambCtx.state === 'suspended') ambCtx.resume();
+        ambGain.gain.cancelScheduledValues(ambCtx.currentTime);
+        ambGain.gain.setValueAtTime(ambGain.gain.value, ambCtx.currentTime);
+        ambGain.gain.linearRampToValueAtTime(0.018, ambCtx.currentTime + 0.8);
+      } catch(e) {}
+    });
+
+    ambientCard.addEventListener('mouseleave', function () {
+      try {
+        if (!ambGain) return;
+        ambGain.gain.cancelScheduledValues(ambCtx.currentTime);
+        ambGain.gain.setValueAtTime(ambGain.gain.value, ambCtx.currentTime);
+        ambGain.gain.linearRampToValueAtTime(0, ambCtx.currentTime + 1.2);
+      } catch(e) {}
+    });
+  }
 
 }());
 </script>

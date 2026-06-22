@@ -918,13 +918,13 @@
     }
     .js-ready .reveal.on { opacity: 1; transform: none; }
 
-    /* Flip cards */
+    /* Flip cards — reveal on scroll, but don't override flip transform */
     .js-ready .flip-card {
       opacity: 0;
-      transform: translateY(18px);
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
-    .js-ready .flip-card.on { opacity: 1; transform: none; }
+    .js-ready .flip-card.on { opacity: 1; }
+    /* The flip transform lives on .flip-card-inner, not .flip-card — no conflict */
 
     /* Step rows */
     .js-ready .step {
@@ -1395,7 +1395,6 @@
           <li>Your business is built around you and your personal brand, often via LinkedIn</li>
           <li>You're based in or generally available during European time zones</li>
           <li>You've chosen this path for flexibility and alignment — not to build "the next big thing"</li>
-          <li>You want real friendships, not just contacts</li>
           <li>You show up for others as much as you want them to show up for you</li>
         </ul>
       </div>
@@ -1403,9 +1402,10 @@
         <h3 class="reveal">This isn't for you if</h3>
         <ul id="list-no">
           <li>You're raising funding or scaling a tech product</li>
-          <li>You're a digital nomad without a steady timezone</li>
-          <li>You're looking for "exceptional girls, scale faster" energy</li>
+          <li>You're looking for networking opportunities more than genuine connections</li>
+          <li>You're looking for "10x your revenue" energy despite your wellbeing</li>
           <li>You join communities and disappear</li>
+          <li>You are still at ideation phase with your business and looking for inspiration only</li>
         </ul>
       </div>
     </div>

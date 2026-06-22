@@ -918,13 +918,13 @@
     }
     .js-ready .reveal.on { opacity: 1; transform: none; }
 
-    /* Flip cards — reveal on scroll, but don't override flip transform */
-    .js-ready .flip-card {
+    /* Flip cards — fade the whole grid in as one unit, no per-card opacity hack */
+    .js-ready .features-grid {
       opacity: 0;
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transition: opacity 0.5s ease;
     }
-    .js-ready .flip-card.on { opacity: 1; }
-    /* The flip transform lives on .flip-card-inner, not .flip-card — no conflict */
+    .js-ready .features-grid.on { opacity: 1; }
+    /* Never put opacity or transform on .flip-card itself — breaks 3D context */
 
     /* Step rows */
     .js-ready .step {
@@ -1626,43 +1626,71 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // ── FLIP CARDS + Web Audio SFX ──
+  // ── FLIP CARD SFX — two distinct sounds: open (brighter) + close (softer/lower) ──
   var audioCtx = null;
 
-  function playFlip() {
+  function initAudio() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+  }
+
+  function playFlipOpen() {
+    // Open: crisp, bright swoosh — higher bandpass, quick attack
     try {
-      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      if (audioCtx.state === 'suspended') audioCtx.resume();
+      initAudio();
       var sr  = audioCtx.sampleRate;
-      var dur = 0.11;
+      var dur = 0.13;
       var len = Math.floor(sr * dur);
       var buf = audioCtx.createBuffer(1, len, sr);
       var d   = buf.getChannelData(0);
       for (var i = 0; i < len; i++) {
-        // White noise with fast exponential decay — paper card sound
-        d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.2) * 0.26;
+        d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 1.8) * 0.28;
       }
-      var src = audioCtx.createBufferSource();
+      var src  = audioCtx.createBufferSource();
       src.buffer = buf;
-      var flt = audioCtx.createBiquadFilter();
+      var flt  = audioCtx.createBiquadFilter();
       flt.type = 'bandpass';
-      flt.frequency.value = 3800;
-      flt.Q.value = 0.55;
+      flt.frequency.value = 4200; // bright, airy
+      flt.Q.value = 0.6;
       var gain = audioCtx.createGain();
-      gain.gain.setValueAtTime(0.55, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.6, audioCtx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
-      src.connect(flt);
-      flt.connect(gain);
-      gain.connect(audioCtx.destination);
+      src.connect(flt); flt.connect(gain); gain.connect(audioCtx.destination);
       src.start();
-    } catch (e) { /* silent fail — audio blocked or unsupported */ }
+    } catch(e) {}
+  }
+
+  function playFlipClose() {
+    // Close: softer, lower swoosh — lower bandpass, slightly longer decay
+    try {
+      initAudio();
+      var sr  = audioCtx.sampleRate;
+      var dur = 0.17;
+      var len = Math.floor(sr * dur);
+      var buf = audioCtx.createBuffer(1, len, sr);
+      var d   = buf.getChannelData(0);
+      for (var i = 0; i < len; i++) {
+        d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.4) * 0.22;
+      }
+      var src  = audioCtx.createBufferSource();
+      src.buffer = buf;
+      var flt  = audioCtx.createBiquadFilter();
+      flt.type = 'bandpass';
+      flt.frequency.value = 2200; // warmer, softer
+      flt.Q.value = 0.5;
+      var gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(0.45, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+      src.connect(flt); flt.connect(gain); gain.connect(audioCtx.destination);
+      src.start();
+    } catch(e) {}
   }
 
   document.querySelectorAll('.flip-card').forEach(function (card) {
     function toggle() {
       var flipped = card.classList.toggle('flipped');
       card.setAttribute('aria-pressed', String(flipped));
-      playFlip();
+      if (flipped) { playFlipOpen(); } else { playFlipClose(); }
     }
     card.addEventListener('click', toggle);
     card.addEventListener('keydown', function (e) {
@@ -1701,15 +1729,13 @@
     closerObs.observe(closer);
   }
 
-  // ── Flip cards — stagger on scroll ──
+  // ── Flip cards — fade grid in on scroll ──
   var grid = document.getElementById('features-grid');
   if (grid) {
     var gridObs = makeObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.flip-card').forEach(function (card, i) {
-            setTimeout(function () { card.classList.add('on'); }, i * 115);
-          });
+          entry.target.classList.add('on');
           gridObs.unobserve(entry.target);
         }
       });

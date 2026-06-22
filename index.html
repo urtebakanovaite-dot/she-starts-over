@@ -918,13 +918,9 @@
     }
     .js-ready .reveal.on { opacity: 1; transform: none; }
 
-    /* Flip cards — fade the whole grid in as one unit, no per-card opacity hack */
-    .js-ready .features-grid {
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-    .js-ready .features-grid.on { opacity: 1; }
-    /* Never put opacity or transform on .flip-card itself — breaks 3D context */
+    /* Flip cards — always visible, no reveal opacity games */
+    /* DO NOT put opacity, transform, or transition on .flip-card or .features-grid */
+    /* The flip lives entirely on .flip-card-inner — nothing else */
 
     /* Step rows */
     .js-ready .step {
@@ -1729,19 +1725,8 @@
     closerObs.observe(closer);
   }
 
-  // ── Flip cards — fade grid in on scroll ──
-  var grid = document.getElementById('features-grid');
-  if (grid) {
-    var gridObs = makeObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('on');
-          gridObs.unobserve(entry.target);
-        }
-      });
-    }, 0.08);
-    gridObs.observe(grid);
-  }
+  // ── Flip cards — no scroll reveal needed; cards always visible ──
+  // (observer removed — opacity games on .flip-card break 3D rendering)
 
   // ── Steps — stagger + connector line ──
   var stepsWrap = document.getElementById('steps-wrapper');

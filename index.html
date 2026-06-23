@@ -1635,12 +1635,52 @@
   });
 
 
-  // ── FLIP CARDS ──
-  document.querySelectorAll('.flip-card').forEach(function (card) {
-    card.addEventListener('click', function () {
-      card.classList.toggle('flipped');
+
+  // ── FLIP CARDS — toggle + gentle swoosh SFX ──
+  (function () {
+    var ctx = null;
+
+    function swoosh(isOpen) {
+      try {
+        if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+        if (ctx.state === 'suspended') ctx.resume();
+
+        var sr  = ctx.sampleRate;
+        var dur = isOpen ? 0.18 : 0.22;
+        var buf = ctx.createBuffer(1, Math.floor(sr * dur), sr);
+        var d   = buf.getChannelData(0);
+        for (var i = 0; i < d.length; i++) {
+          // White noise with smooth exponential decay
+          d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, isOpen ? 1.6 : 2.2) * 0.22;
+        }
+
+        var src  = ctx.createBufferSource();
+        src.buffer = buf;
+
+        // Open: brighter (3800 Hz), Close: warmer (2200 Hz)
+        var flt = ctx.createBiquadFilter();
+        flt.type = 'bandpass';
+        flt.frequency.value = isOpen ? 3800 : 2200;
+        flt.Q.value = 0.5;
+
+        var gain = ctx.createGain();
+        gain.gain.setValueAtTime(0.5, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+
+        src.connect(flt);
+        flt.connect(gain);
+        gain.connect(ctx.destination);
+        src.start();
+      } catch (e) { /* silent fail */ }
+    }
+
+    document.querySelectorAll('.flip-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        var isOpen = card.classList.toggle('flipped');
+        swoosh(isOpen);
+      });
     });
-  });
+  }());
 
   // ── INTERSECTION OBSERVER FACTORY ──
   // Single factory to avoid duplicating options

@@ -476,9 +476,23 @@
       touch-action: manipulation;
       position: relative;
       border-radius: 8px;
+      /* isolation:isolate creates a new stacking context per card,
+         preventing any ancestor opacity/transform from collapsing preserve-3d */
+      isolation: isolate;
+      perspective: 900px;
     }
 
-    /* Front and back stack on top of each other */
+    .flip-card-inner {
+      position: relative;
+      width: 100%; height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.32s cubic-bezier(0.45, 0, 0.55, 1);
+    }
+
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
     .flip-card-front,
     .flip-card-back {
       position: absolute;
@@ -487,41 +501,30 @@
       padding: 1.8rem;
       display: flex;
       flex-direction: column;
-      transition: opacity 0.32s ease;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
-    /* Front: visible by default */
+    /* Front: faces forward */
     .flip-card-front {
       background: var(--cream);
       border: 1.5px solid var(--divider);
       justify-content: center;
-      opacity: 1;
-      z-index: 2;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
-    /* Back: hidden by default */
-    .flip-card-back {
-      background: var(--burgundy);
-      justify-content: center;
-      opacity: 0;
-      z-index: 1;
-    }
-
-    /* Hover: subtle border on front only when NOT flipped */
+    /* Hover only when not flipped */
     .flip-card:not(.flipped):hover .flip-card-front {
       border-color: var(--terracotta);
       box-shadow: 0 6px 28px rgba(107,30,46,0.09);
     }
 
-    /* Flipped: hide front, show back */
-    .flip-card.flipped .flip-card-front {
-      opacity: 0;
+    /* Back: pre-rotated so it shows when inner is flipped */
+    .flip-card-back {
+      background: var(--burgundy);
+      justify-content: center;
+      transform: rotateY(180deg);
     }
-    .flip-card.flipped .flip-card-back {
-      opacity: 1;
-    }
-
-    .flip-card-inner { width: 100%; height: 100%; position: relative; }
 
     .flip-icon { font-size: 2.2rem; margin-bottom: 0.9rem; line-height: 1; }
 
@@ -1636,7 +1639,7 @@
 
 
 
-  // ── FLIP CARDS — toggle + gentle swoosh SFX ──
+  // ── FLIP CARDS — 3D flip + swoosh SFX ──
   (function () {
     var ctx = null;
 
@@ -1645,32 +1648,34 @@
         if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
         if (ctx.state === 'suspended') ctx.resume();
 
-        var sr  = ctx.sampleRate;
-        var dur = isOpen ? 0.18 : 0.22;
-        var buf = ctx.createBuffer(1, Math.floor(sr * dur), sr);
-        var d   = buf.getChannelData(0);
-        for (var i = 0; i < d.length; i++) {
-          // White noise with smooth exponential decay
-          d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, isOpen ? 1.6 : 2.2) * 0.22;
-        }
+        var now = ctx.currentTime;
+        var dur = 0.32;
 
-        var src  = ctx.createBufferSource();
-        src.buffer = buf;
+        // Oscillator sweep — this is what makes it sound like a whoosh, not a tick
+        var osc = ctx.createOscillator();
+        osc.type = 'sine';
+        // Open: pitch sweeps UP (low → high = card coming toward you)
+        // Close: pitch sweeps DOWN (high → low = card going away)
+        osc.frequency.setValueAtTime(isOpen ? 180 : 520, now);
+        osc.frequency.exponentialRampToValueAtTime(isOpen ? 520 : 180, now + dur);
 
-        // Open: brighter (3800 Hz), Close: warmer (2200 Hz)
+        // Gain envelope: fade in, peak at 30%, fade out
+        var gain = ctx.createGain();
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(0.06, now + dur * 0.3);
+        gain.gain.linearRampToValueAtTime(0, now + dur);
+
+        // Light lowpass to keep it soft, not shrill
         var flt = ctx.createBiquadFilter();
-        flt.type = 'bandpass';
-        flt.frequency.value = isOpen ? 3800 : 2200;
+        flt.type = 'lowpass';
+        flt.frequency.value = 900;
         flt.Q.value = 0.5;
 
-        var gain = ctx.createGain();
-        gain.gain.setValueAtTime(0.5, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
-
-        src.connect(flt);
+        osc.connect(flt);
         flt.connect(gain);
         gain.connect(ctx.destination);
-        src.start();
+        osc.start(now);
+        osc.stop(now + dur);
       } catch (e) { /* silent fail */ }
     }
 

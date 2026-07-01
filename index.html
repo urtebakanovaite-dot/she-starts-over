@@ -1087,6 +1087,18 @@
       color: var(--ink-light);
     }
     .photo-break--wide .photo-break-label { color: rgba(255,255,255,0.3); }
+    .photo-break-slot.has-photo {
+      border: none;
+      background: none;
+      opacity: 1;
+      overflow: hidden;
+    }
+    .photo-break-slot.has-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
     /* === FOUNDER PHOTO — styled monogram placeholder === */
     .photo-placeholder-monogram {
@@ -1189,6 +1201,19 @@
       top: 6rem;
     }
     /* PHOTO SLOT IDENTITY: portrait of Urte — replace with <img> when ready */
+    .identity-photo-slot.has-photo {
+      border: none;
+      background: none;
+      overflow: hidden;
+      display: block;
+    }
+    .identity-photo-slot.has-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+      display: block;
+    }
     .identity-photo-slot-label {
       font-size: 10px;
       letter-spacing: 0.12em;
@@ -1297,8 +1322,8 @@
         </div>
       </div>
       <!-- PHOTO SLOT IDENTITY: swap for <img src="urte-portrait.jpg"> after brand shoot -->
-      <div class="identity-photo-slot reveal">
-        <span class="identity-photo-slot-label">Photo coming soon</span>
+      <div class="identity-photo-slot has-photo reveal">
+        <img src="assets/urte-portrait-identity.jpg" alt="Urte, founder of She Starts Over">
       </div>
     </div>
   </div>
@@ -1325,8 +1350,8 @@
 <!-- PHOTO SLOT B: Close-up detail — laptop on desk, or hands holding coffee cup. No face needed. -->
 <div class="photo-break" id="photo-break-b">
   <div class="photo-break-inner">
-    <div class="photo-break-slot">
-      <span class="photo-break-label">Photo coming soon</span>
+    <div class="photo-break-slot has-photo">
+      <img src="assets/detail-workspace.jpg" alt="A close-up moment of solopreneur work — laptop and coffee">
     </div>
   </div>
 </div>
@@ -1469,11 +1494,7 @@
   <div class="container">
     <div class="founder-inner">
       <div class="founder-photo reveal">
-        <!-- PHOTO SLOT A: Portrait of Urte (vertical, warm/natural) -->
-        <div class="photo-placeholder-monogram">
-          <span class="photo-mono-letter">U</span>
-          <span class="photo-mono-label">Photo coming soon</span>
-        </div>
+        <img src="assets/urte-portrait-founder.jpg" alt="Urte, founder of She Starts Over">
       </div>
       <div class="founder-text">
         <span class="eyebrow reveal">Hi, I'm Urte</span>
@@ -1489,13 +1510,40 @@
 </section>
 
 <!-- =============================================
+     TESTIMONIALS
+============================================= -->
+<section class="testimonials">
+  <div class="container-wide">
+    <span class="section-label reveal">What members say</span>
+    <h2 class="reveal">In their own words</h2>
+    <div class="testi-grid" id="testi-grid">
+      <div class="testi">
+        <div class="testi-quote">"</div>
+        <p>Add your first testimonial here. Ask your workshop attendees or current community members for a short quote about what working with you has meant to them.</p>
+        <div class="testi-author">Name — Job title, Business</div>
+      </div>
+      <div class="testi">
+        <div class="testi-quote">"</div>
+        <p>A second testimonial goes here. Ask them specifically to speak to how the community or your facilitation made them feel as a solopreneur.</p>
+        <div class="testi-author">Name — Job title, Business</div>
+      </div>
+      <div class="testi">
+        <div class="testi-quote">"</div>
+        <p>A third testimonial here. Even two or three genuine sentences from real women carries enormous weight.</p>
+        <div class="testi-author">Name — Job title, Business</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
      PHOTO BREAK C — group / co-working shot
 ============================================= -->
 <!-- PHOTO SLOT C: Urte + other women co-working or laughing together. Full-width, warm crop. -->
 <div class="photo-break photo-break--wide" id="photo-break-c">
   <div class="photo-break-inner">
-    <div class="photo-break-slot photo-break-slot--wide">
-      <span class="photo-break-label">Photo coming soon</span>
+    <div class="photo-break-slot photo-break-slot--wide has-photo">
+      <img src="assets/group-photo-wide.jpg" alt="Urte with fellow solopreneurs, connecting in person">
     </div>
   </div>
 </div>

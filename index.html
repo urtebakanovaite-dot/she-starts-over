@@ -679,15 +679,19 @@
     .founder { background: var(--blush); }
     .founder-inner {
       display: grid;
-      grid-template-columns: 260px 1fr;
+      grid-template-columns: 420px 1fr;
       gap: 3rem;
       align-items: start;
     }
-    @media (max-width: 640px) { .founder-inner { grid-template-columns: 1fr; } .founder-photo { margin-top: 0; } }
+    @media (max-width: 860px) {
+      .founder-inner { grid-template-columns: 1fr; }
+      .founder-photo { margin-top: 0; margin-left: auto; margin-right: auto; }
+    }
 
     .founder-photo {
-      width: 260px;
-      aspect-ratio: 5 / 6;
+      width: 420px;
+      max-width: 100%;
+      aspect-ratio: 3 / 4;
       margin-top: 2.1rem;
       position: relative;
       display: flex;
@@ -1146,7 +1150,7 @@
       border-radius: 0;
       border: none;
       box-shadow: none;
-      object-position: center 68%;
+      object-position: center 32%;
     }
 
     /* === FOUNDER PHOTO — styled monogram placeholder === */
@@ -1344,7 +1348,7 @@
 ============================================= -->
 <nav id="site-nav">
   <a href="#" class="nav-logo">
-    <span class="nav-logo-name">She.Starts.Over</span>
+    <span class="nav-logo-name">She Starts Over</span>
     <span class="nav-logo-tag">for solopreneurs who don't want to do it alone</span>
   </a>
   <a href="https://form.typeform.com/to/H4PXSWLF" target="_blank" rel="noopener noreferrer" class="nav-cta">Become a member</a>
@@ -1560,14 +1564,14 @@
      FOUNDER
 ============================================= -->
 <section class="founder">
-  <div class="container">
+  <div class="container-wide">
     <div class="founder-inner">
       <div class="founder-photo reveal">
         <img src="assets/urte-portrait-founder.jpg" alt="Urte, founder of She Starts Over">
       </div>
       <div class="founder-text">
         <span class="eyebrow reveal">Hi, I'm Urte</span>
-        <h2 class="reveal">A little bit about why She.Starts.Over exists</h2>
+        <h2 class="reveal">A little bit about why She Starts Over exists</h2>
         <p class="reveal">I built She Starts Over because I truly believe in the power of building together.</p>
         <p class="reveal">When I started my own business, I quickly realised that the thing that made the biggest difference wasn't another course, strategy, or business book. It was having the right people around me.</p>
         <p class="reveal">I still remember conversations that changed the way I thought about my business and ultimately changed the direction it took.</p>

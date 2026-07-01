@@ -679,14 +679,16 @@
     .founder { background: var(--blush); }
     .founder-inner {
       display: grid;
-      grid-template-columns: 200px 1fr;
+      grid-template-columns: 260px 1fr;
       gap: 3rem;
       align-items: start;
     }
-    @media (max-width: 640px) { .founder-inner { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .founder-inner { grid-template-columns: 1fr; } .founder-photo { margin-top: 0; } }
 
     .founder-photo {
-      width: 200px; height: 240px;
+      width: 260px;
+      aspect-ratio: 5 / 6;
+      margin-top: 2.1rem;
       background: var(--divider);
       border-radius: 6px;
       display: flex;
@@ -1098,6 +1100,9 @@
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+    .photo-break-slot--wide.has-photo img {
+      object-position: center 68%;
     }
 
     /* === FOUNDER PHOTO — styled monogram placeholder === */
@@ -1512,7 +1517,8 @@
 <!-- =============================================
      TESTIMONIALS
 ============================================= -->
-<section class="testimonials">
+<!-- DISABLED (Session 5): no real testimonials yet. Remove style="display:none;" once quotes are added — see master-doc Phase 7. -->
+<section class="testimonials" style="display:none;">
   <div class="container-wide">
     <span class="section-label reveal">What members say</span>
     <h2 class="reveal">In their own words</h2>

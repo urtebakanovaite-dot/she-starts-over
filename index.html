@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#FDF8F5" />
   <meta name="description" content="She Starts Over is a curated community for female solopreneurs done building alone. Real friendships. Honest conversations. Women who get it." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Building alone? You don't have to." />
+  <meta property="og:description" content="A curated community for female solopreneurs done building alone. Real friendships, honest conversations, women who get it." />
+  <meta property="og:image" content="https://www.shestartsover.co/assets/group-photo-wide.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://www.shestartsover.co/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Building alone? You don't have to." />
+  <meta name="twitter:description" content="A curated community for female solopreneurs done building alone. Real friendships, honest conversations, women who get it." />
+  <meta name="twitter:image" content="https://www.shestartsover.co/assets/group-photo-wide.jpg" />
   <title>She Starts Over | For Female Solopreneurs Who Don't Want to Do It Alone</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%236B1E2E'/><text x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>S</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,6 +26,8 @@
 
     /* === RESET === */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { overflow-x: hidden; }
 
     /* === DESIGN TOKENS === */
     :root {
@@ -149,12 +162,14 @@
     .nav-cta {
       background: linear-gradient(135deg, var(--burgundy) 0%, #8B2E42 100%);
       color: var(--white);
-      padding: 0.58rem 1.4rem;
+      padding: 0.5rem 1.1rem;
       border-radius: 100px;
       font-size: 13px;
       font-weight: 500;
       letter-spacing: 0.04em;
       text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
       position: relative;
       overflow: hidden;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -692,6 +707,7 @@
     .founder-photo {
       width: 420px;
       max-width: 100%;
+      min-width: 0;
       aspect-ratio: 3 / 4;
       margin-top: 2.1rem;
       position: relative;
@@ -1002,6 +1018,7 @@
       #back-to-top { bottom: 1.25rem; right: 1.25rem; }
       .identity::after { font-size: 18rem; }
       .hl-em { font-size: clamp(2.6rem, 12vw, 4rem); }
+      .founder-photo { width: 100%; max-width: 260px; }
     }
 
     /* LINKEDIN CONNECT CARD */
@@ -1352,7 +1369,7 @@
     <span class="nav-logo-name">She Starts Over</span>
     <span class="nav-logo-tag">for solopreneurs who don't want to do it alone</span>
   </a>
-  <a href="https://form.typeform.com/to/H4PXSWLF" target="_blank" rel="noopener noreferrer" class="nav-cta" data-umami-event="become-member-click" data-umami-event-location="nav">Become a member</a>
+  <a href="https://form.typeform.com/to/H4PXSWLF" target="_blank" rel="noopener noreferrer" class="nav-cta" data-umami-event="become-member-click" data-umami-event-location="nav">I'm in</a>
 </nav>
 
 <!-- =============================================
@@ -1389,10 +1406,10 @@
         <p class="section-label reveal">Where meaningful connections begin</p>
         <h2 class="reveal">This space is made for you if...</h2>
         <div class="identity-body">
-          <p class="reveal">You've built a business around your expertise — coaching, marketing, branding, PR, sales funnels, or something entirely your own. You love the freedom of building it your way.</p>
-          <p class="reveal">But sometimes you wish you had women around you who truly get it — the wins, the doubts, and the weight of doing it all by yourself.</p>
+          <p class="reveal">You've built a business around your expertise: coaching, marketing, branding, PR, sales funnels, or something entirely your own. You love the freedom of building it your way.</p>
+          <p class="reveal">But sometimes you wish you had women around you who truly get it: the wins, the doubts, and the weight of doing it all by yourself.</p>
           <p class="reveal">You've done the networking events. The small talk. The LinkedIn exchanges.</p>
-          <p class="reveal">You're not looking for "10x your revenue" energy. You want meaningful conversations with women who understand what it's like to build something of their own — while creating a business and life that feel sustainable, aligned, and fulfilling.</p>
+          <p class="reveal">You're not looking for "10x your revenue" energy. You want meaningful conversations with women who understand what it's like to build something of their own, while creating a business and life that feel sustainable, aligned, and fulfilling.</p>
         </div>
       </div>
       <!-- PHOTO SLOT IDENTITY: swap for <img src="urte-portrait.jpg"> after brand shoot -->
@@ -1501,10 +1518,10 @@
       <div class="list-block">
         <h3 class="reveal">This is for you if</h3>
         <ul id="list-yes">
-          <li>You run an independent, service-based business — coaching, marketing, branding, PR, sales funnels, or similar</li>
+          <li>You run an independent, service-based business: coaching, marketing, branding, PR, sales funnels, or similar</li>
           <li>Your business is built around you and your personal brand, often via LinkedIn</li>
           <li>You're based in or generally available during European time zones</li>
-          <li>You've chosen this path for flexibility and alignment — not to build "the next big thing"</li>
+          <li>You've chosen this path for flexibility and alignment, not to build "the next big thing"</li>
           <li>You show up for others as much as you want them to show up for you</li>
         </ul>
       </div>

@@ -479,10 +479,15 @@
       color: var(--ink);
     }
 
+    .container-full { max-width: 1180px; margin: 0 auto; }
+
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 1.2rem;
+    }
+    @media (min-width: 860px) {
+      .features-grid { grid-template-columns: repeat(4, 1fr); }
     }
 
     /* ── FLIP CARDS ── */
@@ -514,11 +519,12 @@
       position: absolute;
       inset: 0;
       border-radius: 8px;
-      padding: 1.8rem;
+      padding: 1.6rem;
       display: flex;
       flex-direction: column;
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
+      overflow-y: auto;
     }
 
     /* Front: faces forward */
@@ -560,9 +566,9 @@
       margin-bottom: 0.6rem;
     }
     .flip-card-back p {
-      font-size: 0.87rem;
+      font-size: 0.82rem;
       color: rgba(255,255,255,0.88);
-      line-height: 1.72;
+      line-height: 1.62;
     }
 
     .flip-hint {
@@ -623,7 +629,7 @@
       flex-shrink: 0;
       margin-top: 1px;
     }
-    .list-block.not ul li::before { content: '—'; color: var(--ink-light); }
+    .list-block.not ul li::before { content: '✗'; color: var(--ink-light); }
 
     /* =============================================
        HOW IT WORKS
@@ -761,6 +767,19 @@
       color: var(--ink);
     }
     .founder-text p { font-size: 0.98rem; color: var(--ink-mid); line-height: 1.8; margin-bottom: 1rem; }
+
+    .founder-text-full {
+      margin-top: 2.2rem;
+      padding-top: 2.2rem;
+      border-top: 1px solid var(--divider);
+    }
+    .founder-text-full p {
+      font-size: 0.98rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .founder-text-full p:last-child { margin-bottom: 0; }
 
     /* =============================================
        TESTIMONIALS
@@ -1327,15 +1346,16 @@
       justify-content: center;
       gap: 0.6rem;
       margin-top: 1.2rem;
-      font-size: 12px;
-      color: rgba(255,255,255,0.55);
-      letter-spacing: 0.05em;
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.82);
+      letter-spacing: 0.04em;
       opacity: 0;
       transform: translateY(6px);
       transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
     }
     .offer-meta.badge-on { opacity: 1; transform: none; }
-    .offer-meta-divider { color: rgba(255,255,255,0.2); }
+    .offer-meta-divider { color: rgba(255,255,255,0.3); }
 
     /* =============================================
        REDUCED MOTION — kill all animations
@@ -1445,15 +1465,17 @@
       </div>
       <div class="founder-text">
         <span class="eyebrow reveal">Hi, I'm Urte</span>
-        <h2 class="reveal">A little bit about why She Starts Over exists</h2>
+        <h2 class="reveal">A little bit about why<br>She Starts Over exists</h2>
         <p class="reveal">When I started my own business, I was looking for something many of us are searching for: more freedom and alignment.</p>
         <p class="reveal">A few years ago, I found myself moving from one milestone to the next without stopping to ask what I actually wanted my life to look like. <strong>What kind of life am I trying to build? What does success actually mean to me? And what am I willing or unwilling to sacrifice for it?</strong></p>
         <p class="reveal">I wanted to start over, not by starting from scratch, but by intentionally redesigning my life around what truly matters to me.</p>
         <p class="reveal">Then I realised I wasn't the only one. So many women start businesses looking for more freedom, yet somewhere along the way entrepreneurship quietly becomes another version of the life they were trying to leave behind: filled with more pressure, more responsibility, and the feeling that everything depends on them.</p>
-        <p class="reveal">That's when I realised something: <strong>building a successful business shouldn't come at the expense of the life you wanted it to create.</strong> And it shouldn't mean carrying everything alone.</p>
-        <p class="reveal">That's why I created She Starts Over: a trusted circle for women who believe there's a more intentional way to build, where meaningful relationships, shared support and genuine connection are just as important as business growth.</p>
-        <p class="reveal">Because when you have the right women in your corner, you don't just build a better business. <strong>You build one that supports the life you're creating.</strong></p>
       </div>
+    </div>
+    <div class="founder-text-full">
+      <p class="reveal">That's when I realised something: <strong>building a successful business shouldn't come at the expense of the life you wanted it to create.</strong> And it shouldn't mean carrying everything alone.</p>
+      <p class="reveal">That's why I created She Starts Over: a trusted circle for women who believe there's a more intentional way to build, where meaningful relationships, shared support and genuine connection are just as important as business growth.</p>
+      <p class="reveal">Because when you have the right women in your corner, you don't just build a better business. <strong>You build one that supports the life you're creating.</strong></p>
     </div>
   </div>
 </section>
@@ -1466,7 +1488,9 @@
   <div class="container-wide">
     <span class="section-label reveal">What's inside</span>
     <h2 class="reveal">Here's what being a member looks like</h2>
+  </div>
 
+  <div class="container-full">
     <div class="features-grid" id="features-grid">
 
       <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Founder Circles — tap to flip">
@@ -1478,7 +1502,7 @@
           </div>
           <div class="flip-card-back">
             <h3>Founder Circles</h3>
-            <p>Bring the challenge that's been taking up space in your head. Whether you're making a difficult decision, refining an offer, preparing for a launch or simply feeling stuck, this is where we think through it together. We alternate between Founder Circles, where one member brings a real business challenge for the group to help solve, and Feedback Sessions, where you receive thoughtful input on your content, offer or next move.</p>
+            <p>Bring the challenge that's been taking up space in your head. Whether you're making a difficult decision, refining an offer, preparing for a launch or simply feeling stuck, this is where we think through it together. We alternate between Founder Circles, where we tackle a real business challenge together, and Feedback Sessions, where you receive thoughtful input on your content, offer or next move.</p>
             <span class="flip-hint-back">↻ flip back</span>
           </div>
         </div>
@@ -1508,7 +1532,7 @@
           </div>
           <div class="flip-card-back">
             <h3>Monthly Reset</h3>
-            <p>A dedicated space to pause before the next month begins. Together, we'll reflect on what's energising you, what's draining you, and whether your business is still supporting the life you're building. Because sometimes the bravest thing you can do isn't push harder, it's pause, reflect, and choose your next step with intention.</p>
+            <p>A dedicated space to pause before the next month begins. Together, we'll reflect on what's energising you, what's draining you, and whether your business is still supporting the life you're building.</p>
             <span class="flip-hint-back">↻ flip back</span>
           </div>
         </div>

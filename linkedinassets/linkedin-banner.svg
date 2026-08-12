@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1584 396" width="1584" height="396">
+  <!-- Background: deep cream -->
+  <rect width="1584" height="396" fill="#FDF8F5"/>
+
+  <!-- Left burgundy block — decorative, stays behind profile photo zone -->
+  <rect x="0" y="0" width="280" height="396" fill="#6B1E2E"/>
+
+  <!-- Soft diagonal accent separating burgundy from cream -->
+  <polygon points="280,0 360,0 300,396 220,396" fill="#8B2E42" opacity="0.45"/>
+
+  <!-- Decorative terracotta horizontal rule -->
+  <rect x="420" y="148" width="40" height="2" fill="#B8788A"/>
+
+  <!-- Main headline -->
+  <text x="420" y="210" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="700" font-style="italic" fill="#6B1E2E">She Starts Over</text>
+
+  <!-- Tagline -->
+  <text x="422" y="248" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#8C6D5E" letter-spacing="2.5">a curated community for female solopreneurs</text>
+
+  <!-- Divider line -->
+  <rect x="422" y="270" width="600" height="1" fill="#E8D5CC"/>
+
+  <!-- Value prop line -->
+  <text x="422" y="300" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#4A3728">Real friendships · Honest conversations · Women who get it</text>
+
+  <!-- Right side: monogram mark -->
+  <circle cx="1430" cy="198" r="100" fill="#6B1E2E" opacity="0.08"/>
+  <circle cx="1430" cy="198" r="72" fill="none" stroke="#B8788A" stroke-width="1.5" opacity="0.4"/>
+  <text x="1430" y="245" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="700" font-style="italic" fill="#6B1E2E" text-anchor="middle" opacity="0.18">S</text>
+
+  <!-- Bottom-left: safe zone indicator (just colour, not text) -->
+  <!-- Profile photo covers approx bottom-left 200x150px - left block covers this -->
+
+  <!-- Small website text bottom right -->
+  <text x="1520" y="375" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#8C6D5E" text-anchor="end">shestartsover.com</text>
+</svg>

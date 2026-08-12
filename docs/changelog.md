@@ -3,6 +3,53 @@
 
 ---
 
+## Tools site v0.10 — August 12, 2026
+**Repo:** `she-starts-over-tools` · **Session:** 9
+
+### Fixed
+- AI generating indicator always visible on page load (duplicate `display` property in inline style)
+- Dashboard onboarding alerts panel showing "All members fully onboarded" incorrectly (filter excluded members with no join date or no step records)
+
+### Added
+- Inline note edit: pencil button on each note → textarea + Save/Cancel → `UPDATE member_notes` on Supabase
+- Full rich-text toolbar on AI output cards: **B**, *I*, U, H2, ¶, bullet list, Copy, Delete
+- `ai_outputs` Supabase table: all AI-generated content persisted, loaded on page open (SQL in session chat)
+
+---
+
+## Tools site v0.9 — August 12, 2026
+**Repo:** `she-starts-over-tools` · **Session:** 8 (continued)
+
+### Added
+- Mobile bottom nav (fixed tab bar, burgundy) on all 6 pages — shows only at ≤768px
+- Note delete (hard delete from `member_notes`, guarded by `window.confirm`)
+- AI output history accordion: outputs saved to `ai_outputs` table, displayed newest-first below AI buttons, survive page reload
+- Markdown rendering in AI output boxes: `**bold**` → `<strong>`, `*italic*` → `<em>`, `# headings`, `- bullets` — all parsed client-side with no dependency
+- Favicon SVG added to all pages (burgundy circle, cream heart)
+
+---
+
+## Tools site v0.1–v0.8 — August 12, 2026
+**Repo:** `she-starts-over-tools` · **Session:** 8
+*Full build in one session — 8 phases. See build-journal Session 8 for detail.*
+
+### Created (new repo, new files)
+- `docs/schema.sql` (in main repo): 7 Supabase tables — members, member_notes, onboarding_steps, offboarding_steps, events, event_attendance, member_tags
+- `assets/style.css`: complete She Starts Over design system (brand tokens, sidebar shell, all shared components)
+- `assets/favicon.svg`: burgundy circle + cream heart
+- `js/supabase.js`: async config fetch, Supabase client init, `requireAuth()` guard
+- `js/utils.js`: formatting helpers, badge generators, Supabase write helpers, step/note utilities
+- `api/config.js`: Vercel serverless — serves public Supabase credentials only
+- `api/ai.js`: Vercel serverless Claude proxy — 6 AI features, model `claude-haiku-4-5-20251001`
+- `login.html`: branded password gate, sessionStorage auth token
+- `index.html`: dashboard — stat cards, alerts panels, founding countdown, activity feed
+- `members.html`: member list — live search, filters, sortable table, AI introduction panel
+- `member.html`: member profile — inline edit, tags, application answers, AI tools, checklists, notes
+- `new-member.html`: add member — live avatar preview, founding-rate auto-calc, creates 16 onboarding/offboarding steps on save
+- `health.html`: community health — Chart.js (approved CDN exception), MRR/status/funnel/attendance charts, revenue projection table
+
+---
+
 ## v3.0d — July 19, 2026
 **File:** `index.html` · **Session:** 7
 

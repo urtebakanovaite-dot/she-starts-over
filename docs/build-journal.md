@@ -10,6 +10,92 @@
 
 ---
 
+## Session 9 — August 12, 2026 · Tools Site UI Fixes + Feature Pass (v0.9 → v0.10)
+*Repo: `she-starts-over-tools`*
+
+### What was done
+- **Mobile navigation**: fixed-position bottom tab bar (Dashboard / Members / Add / Health) added to all 6 HTML pages. Sidebar remains on desktop; bottom nav renders only on ≤768px screens.
+- **Dashboard onboarding alert bug fixed**: the "all members fully onboarded" false positive was caused by a `THREE_DAYS` filter that silently excluded members with no join date or steps. Replaced with a direct incomplete-steps check — any active member with 0 of N steps completed now correctly triggers the alert.
+- **Note inline edit**: pencil icon added to each note in the notes log. Clicking it replaces the note body with a prefilled textarea + Save/Cancel. Save calls `UPDATE member_notes SET note_text` on Supabase. No risk to existing data — cancel restores original text without a database call.
+- **Note delete**: was already in v0.9. Confirmed working; hard delete from `member_notes` with `window.confirm` gate.
+- **AI generating indicator bug fixed**: the indicator had `display:none` and `display:flex` both in the same inline style string — the latter won, so the spinner showed permanently. Removed the second declaration; JS now sets `display:flex` on click and clears it in `finally`.
+- **AI output markdown rendering**: replaced `textContent` assignment with a lightweight markdown→HTML parser (`markdownToHtml`). Converts `# ` / `## ` / `### ` to `<h3>`, `**` to `<strong>`, `*` to `<em>`, `- ` bullet blocks to `<ul><li>`, remaining lines to `<p>`. No external dependency.
+- **AI history accordion**: all generated outputs are now saved to a new `ai_outputs` Supabase table (member_id, feature, label, content, created_at, updated_at). They load on page open and display as a collapsible accordion below the AI buttons, newest first. Outputs persist across sessions, across tabs, and survive accidental clicks.
+- **AI output editing**: each history item has a full rich-text editor bar (dark toolbar strip above the contenteditable): **B**, *I*, U, H2, ¶, bullet list, Copy, Delete. `document.execCommand` for formatting. Auto-saves to `ai_outputs.content` after 1.2s idle. A "Saved" flash confirms each write.
+- **`ai_outputs` table**: run `CREATE TABLE ai_outputs (...)` in Supabase SQL Editor — SQL documented in session chat.
+
+### Incidents
+None. All changes targeted and tested locally before push.
+
+### Lessons learned
+
+**32. Two `display:` values in one inline style string — last one always wins**
+CSS inline styles are parsed left-to-right; a duplicate property is not an error, the later value simply wins. Generated code that writes `style="display:none; ... display:flex"` will appear hidden while writing but always show on render. Standard fix: set only the initial state in HTML (`display:none`), let JS toggle the other via `.style.display = 'flex'` when needed — never duplicate the property in markup.
+
+**33. Dashboard "all good" signals need to be falsifiable, not just true by default**
+The onboarding alert was designed to only show members who had been around >3 days with incomplete steps. That's a reasonable idea, but the code also silently passed through members with no steps at all (because `!s` = undefined = return false). The safer design: any active member without 100% step completion should surface — Urte can always dismiss false positives. Alerts that fail silently are worse than alerts that fire too often.
+
+**34. AI output boxes must save immediately on generate, not on close**
+The original design displayed AI output in a single shared box that cleared when the user clicked away. First-time usage always risks accidental dismissal. Correct pattern: write to the database the moment a response is received, independent of UI state. The display layer is just a view — the source of truth is the database entry.
+
+**35. `document.execCommand` is "deprecated" but still the correct tool for basic rich text in plain HTML**
+The MDN deprecation notice for `execCommand` leads developers toward a full custom editor implementation, which is overkill for a private admin tool. `execCommand('bold')`, `execCommand('italic')`, `execCommand('formatBlock')`, `execCommand('insertUnorderedList')` all work reliably in Chromium and Safari (the only browsers Urte will use). Use it for small admin tools; reach for Tiptap or Quill only when the editor is user-facing or needs fine-grained undo history.
+
+---
+
+## Session 8 — August 12, 2026 · Tools Site Build — Phase 1–8 Complete (v0.1 → v0.8)
+*Repo: `she-starts-over-tools`*
+
+### What was done
+Full build of the private admin tools site from scratch, in one session. 8 phases completed:
+
+**Phase 1 — SQL schema** (`docs/schema.sql` in main repo): 7 tables (members, member_notes, onboarding_steps, offboarding_steps, events, event_attendance, member_tags), indexes, auto `updated_at` trigger, RLS intentionally disabled (private tool).
+
+**Phase 2 — Shared foundation**: `assets/style.css` (complete design system — brand tokens, sidebar shell, all UI components), `js/supabase.js` (async config fetch + client init + `requireAuth`), `js/utils.js` (formatting helpers, badge generators, Supabase helpers), `api/config.js` (Vercel serverless — returns public Supabase creds only, never exposes service role or Claude key).
+
+**Phase 3 — `login.html`**: branded password gate with shake animation. `sessionStorage` token. Password stored in 1Password. Favicon added.
+
+**Phase 4 — `index.html` (Dashboard)**: 4 stat cards (active members, MRR, onboarding rate, at-risk count), onboarding alerts panel, at-risk panel, founding rate countdown (only shown within 90 days), recent activity feed. All data loaded in parallel on page open.
+
+**Phase 5 — `members.html`**: live debounced search (200ms), status + cohort filters, sortable table, onboarding progress bars, last-note date (red if none), events attended count. Suggest introductions → slide-in panel → `api/ai.js` → pairings rendered as cards.
+
+**Phase 6 — `member.html`**: two-column layout. Left: avatar, inline-editable fields (auto-save 800ms), tags, application answers (collapsible), 4 AI tool buttons. Right: onboarding checklist (optimistic UI), offboarding (hidden unless churned/alumni), events attended, notes log.
+
+**Phase 7 — `health.html`**: 4 stat cards, Chart.js (CDN — only approved exception), MRR line chart, status donut, onboarding funnel bar, event attendance bar (top 10), revenue projection table with founding-rate expiry countdowns.
+
+**Phase 8 — `api/ai.js`**: Vercel serverless Claude proxy. 6 features: `introduction_matcher`, `pre_1on1_brief`, `post_1on1_draft`, `at_risk_digest`, `welcome_email`, `exit_interview_prep`. Model: `claude-haiku-4-5-20251001`. Claude API key server-side only. Introduction matcher attempts JSON parse, falls back to plain text.
+
+**Doc updates**: `docs/schema.sql` added to main repo. `tools-build-plan.md` marked COMPLETE. `master-doc.md` updated with full session decision log.
+
+### Infrastructure set up this session
+| Component | Status | Notes |
+|---|---|---|
+| `she-starts-over-tools` GitHub repo | ✅ | Private, under pocsgeri1 |
+| Vercel (tools site) | ✅ | Geri's personal Vercel, separate from public site |
+| Supabase project | ✅ | Schema deployed, RLS off, 7 tables live |
+| `tools.shestartsover.co` subdomain | ✅ | CNAME in Porkbun → Geri's Vercel |
+| Vercel env vars | ⬜ | `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `CLAUDE_API_KEY` to be set before first test |
+| `ai_outputs` table | ⬜ | SQL added Session 9 — needs to be run in Supabase |
+
+### Incidents
+- **`she-starts-over-tools` repo not on disk at session start**: Claude tried to write to it before it existed locally. User cloned via GitHub Desktop, then mounted it as a Cowork folder. No data lost.
+- **Supabase RLS warning on schema run**: Supabase flagged that tables were created without RLS. Correct response: "Run without enabling RLS" — this is intentional for a private password-gated admin tool.
+
+### Lessons learned
+
+**32 (see Session 9 entry above for 32–35)**
+
+**Pre-32. Env vars in plain HTML require a serverless shim**
+There's no secure way to put secret keys directly in client-side JS. The solution: a Vercel serverless function (`api/config.js`) that serves only the *public* Supabase credentials (anon key + project URL) to the browser. The service role key and Claude API key never leave the server. This pattern scales to any plain HTML site that needs secrets.
+
+**Pre-33. RLS-off is correct for a private admin tool**
+Supabase enables RLS (Row Level Security) by default and warns when you don't. For a tool that sits behind a password gate and is never user-facing, RLS adds complexity with no security benefit — the auth layer is the login page. The right call was to disable RLS explicitly and document why, so future Geri/Urte doesn't undo it thinking it was an oversight.
+
+**Pre-34. Optimistic UI for checklists requires a revert path**
+Checklist toggles update the UI instantly before the Supabase call resolves. The revert path (toggle back + toast on failure) has to be written before the try block, not as an afterthought — otherwise a failed network call leaves the UI in a permanently wrong state.
+
+---
+
 ## Session 7 — July 19, 2026 · Full Copy Pass + Section Reorder + Flip Card Redesign (v3.0 → v3.0d)
 
 ### What was done

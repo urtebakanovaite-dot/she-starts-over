@@ -1,6 +1,6 @@
 # She Starts Over — Roadmap
 *Target: €2,000/month by December 2026*
-*Last updated: July 19, 2026*
+*Last updated: August 12, 2026*
 
 **Status:** ✅ Done · 🔄 In progress · ⬜ Not started · ⚠️ Blocked
 
@@ -11,21 +11,23 @@
 
 | Task | Status | Notes |
 |---|---|---|
-| Landing page built (v3.0d) | ✅ | `index.html` on GitHub + Vercel. Session 7: full copy pass, section reorder, flip cards redesigned (4 cards, full-width row) — see changelog v3.0–v3.0d |
+| Landing page built (v3.0d) | ✅ | `index.html` on GitHub + Vercel. Session 7: full copy pass, section reorder, flip cards redesigned — see changelog v3.0–v3.0d |
 | GitHub + Vercel connected | ✅ | Auto-deploys on push |
-| Buy domain (porkbun.com) | ✅ | Live: `shestartsover.co` (`.com` unavailable, `.co` used as planned fallback) |
+| Buy domain (porkbun.com) | ✅ | Live: `shestartsover.co` |
+| **Admin tools site built** | ✅ | `tools.shestartsover.co` — private CRM + AI tools. Sessions 8–9. See build-journal. |
+| **Supabase database live** | ✅ | 7 tables + `ai_outputs` — schema in `docs/schema.sql` |
 | Insert real Calendly link | ⬜ | Replace placeholder in HTML |
 | Set up business email inbox | ⬜ | Google Workspace or Zoho — do before outreach |
 | She Connects Eventbrite live + linked | ✅ | Live link confirmed in `index.html` v2.2 |
 | Brunch Eventbrite live + linked | ⬜ | Copy ready in master-doc Phase 4B |
 | Tally application form live | ⬜ | Questions in master-doc Phase 6 |
-| Brevo email list set up | ⬜ | Day 0 + Day 1 templates in master-doc Phase 5 |
+| Brevo email list set up | ⬜ | Day 0 + Day 1 templates in master-doc Phase 5. Brevo webhook into tools site = Phase 9 (deferred). |
 | Outreach tracker (Google Sheets) | ⬜ | Columns: Name / Platform / Date / Stage / Next |
 | LinkedIn DMs started (10–15/week) | ⬜ | Templates in master-doc Phase 9 |
-| Founder photo live on site | 🔄 | All 4 photos (identity, founder, detail, group) wired into `index.html` v2.5a; uploaded to GitHub `assets/` folder — awaiting push to live site (see build-journal Session 5) |
-| 2–3 real testimonials on site | ⬜ | Section re-disabled via `display:none` in v2.4 after reappearing in the project file — see build-journal Session 5, Lesson 15 |
+| Founder photo live on site | 🔄 | All 4 photos wired into `index.html` v2.5a; uploaded to GitHub `assets/` — awaiting push to live site |
+| 2–3 real testimonials on site | ⬜ | Section disabled via `display:none` — re-enable once quotes are ready |
 | Privacy policy page | ⬜ | GDPR-required before email capture or analytics |
-| Umami analytics added | ✅ | Script live (v2.6) + 8 custom click/scroll events (v2.7) — see changelog |
+| Umami analytics added | ✅ | Script live (v2.6) + 8 custom events (v2.7) |
 
 ---
 

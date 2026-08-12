@@ -1,7 +1,30 @@
 # She Starts Over — Master Project Document
 
-*Last updated: August 12, 2026 (Session 8)*
+*Last updated: August 12, 2026 (Session 8 — tools site build complete)*
 *Purpose: single reference doc to bring into new chats. Compiles all strategic decisions, copy, and open threads from project development to date.*
+
+---
+
+## Session 8 — August 12, 2026 (continued: tools site build)
+
+**Tools site — built and deployed this session (v1.0):**
+- `login.html` — password gate (sessionStorage). Password saved in 1Password. Cloudflare Access to replace this once community is live.
+- `index.html` — dashboard: MRR, active members, onboarding rate, at-risk count, onboarding alerts panel, at-risk panel, founding rate countdown, recent activity feed
+- `members.html` — full member list with live search, status/cohort filters, sortable columns, AI introduction matcher (slide-in panel)
+- `member.html` — individual member: inline-editable fields, status change, tags, application answers, 4 AI tool buttons, onboarding checklist, offboarding checklist (hidden until churned/alumni), events attended, append-only notes log
+- `new-member.html` — add member form: auto-calculates founding rate expiry, avatar preview, creates member + all 16 onboarding/offboarding steps on save, redirects to profile
+- `health.html` — community health: stat cards, MRR line chart, status donut, onboarding funnel, event attendance bar, revenue projection table
+- `api/ai.js` — Vercel serverless function: all 6 AI features routed through Claude (haiku-4-5). Claude API key server-side only.
+- `api/config.js` — serves public Supabase credentials to browser. Service role key never exposed.
+- `assets/style.css` — full design system: She Starts Over tokens, all UI components
+- `js/supabase.js` + `js/utils.js` — shared client init, auth guard, helpers
+
+**Repo:** `she-starts-over-tools` (private, pocsgeri1 GitHub) → `tools.shestartsover.co` via Geri's Vercel
+
+**Open items from this session:**
+- Phase 9 (Brevo webhook integration) — deferred, dedicated session after email sequence copy is written
+- Cloudflare Access gate — deferred, add after community launches
+- Test the site end-to-end with first real or dummy member
 
 ---
 
@@ -189,13 +212,14 @@ Database tables: `members`, `member_notes` (append-only), `onboarding_steps`, `o
 - [ ] Run brunch
 - [ ] Run founding member calls from both events
 
-**Tools site (next session):**
-- [ ] Build SQL schema → paste into Supabase SQL Editor
-- [ ] Build `index.html` dashboard + shared `style.css` + `supabase.js`
-- [ ] Build `members.html`, `member.html`, `new-member.html`, `health.html`
-- [ ] Wire in AI features (Claude API via Vercel serverless `/api/ai.js`)
-- [ ] Add simple login page (sessionStorage auth)
+**Tools site — COMPLETE (built Session 8):**
+- [x] Build SQL schema → pasted into Supabase SQL Editor (7 tables confirmed)
+- [x] Build `index.html` dashboard + shared `style.css` + `supabase.js`
+- [x] Build `members.html`, `member.html`, `new-member.html`, `health.html`
+- [x] Wire in AI features (Claude API via Vercel serverless `/api/ai.js`)
+- [x] Add simple login page (sessionStorage auth) — password in 1Password
 - [ ] Add Cloudflare Access gate (deferred — after community launches)
+- [ ] Phase 9: Brevo webhook — dedicated session after email copy is written
 
 **Brevo (dedicated session):**
 - [ ] Write onboarding email sequence: Day 0 / Day 3 / Week 3 / Month 5 week 3

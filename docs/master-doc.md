@@ -1,7 +1,59 @@
 # She Starts Over — Master Project Document
 
-*Last updated: July 19, 2026 (Session 7)*
+*Last updated: August 12, 2026 (Session 8)*
 *Purpose: single reference doc to bring into new chats. Compiles all strategic decisions, copy, and open threads from project development to date.*
+
+---
+
+## Session 8 — August 12, 2026
+
+**Topic:** Community onboarding/offboarding workflow + Member CRM + Tools site architecture
+
+**Decisions:**
+- Build a private admin tools site at `tools.shestartsover.co` — same GitHub + Vercel pattern as Geri's epistemic-tools
+- Stack: plain HTML/CSS/JS (no framework, no build step), Supabase (Postgres database + API), Claude API (AI features), Vercel (hosting)
+- Security: simple login page (sessionStorage) for now, Cloudflare Access gate to be added later
+- Database: Supabase (not Excel/Sheets) — required for AI recommendation features to work properly
+- Repo: `she-starts-over-tools` — private repo under Geri's personal GitHub (`pocsgeri1`), connected to Geri's personal Vercel account
+- Subdomain: `tools.shestartsover.co` — CNAME added in Porkbun pointing to Geri's Vercel. Completely separate from Urte's Vercel account which hosts the public site
+- Supabase account: created under Geri's `pocsgeri1` GitHub. Geri is sole admin. Same Supabase account to be reused for Epistemic and other future projects
+- Circle: do NOT set up yet. Start free trial ~1 week before community launch (14-day trial is sufficient for setup). Geri will assist in a dedicated session
+- Brevo onboarding automation: trigger when new paying member is added to CRM. Email sequence to be written in a dedicated session (flagged in Up Next)
+- Offboarding flow: built in from day one, not added later
+
+**Tools site — confirmed feature set:**
+
+Multi-page app with these pages:
+1. `index.html` — dashboard: MRR, member counts, onboarding alerts, at-risk flags, founding rate conversion countdown
+2. `members.html` — full member list with search/filter
+3. `member.html` — individual member: profile, onboarding checklist, offboarding checklist, notes log, AI buttons
+4. `new-member.html` — add new member form
+5. `health.html` — community health dashboard: MRR chart, churn, onboarding funnel, event attendance, revenue projection
+
+AI features (all confirmed, build in from start):
+- Introduction matcher — suggests 2–3 member pairings with draft intro email line
+- Pre-1:1 brief — one-click summary + suggested questions before each monthly 1:1
+- Post-1:1 email draft — Urte pastes raw notes, AI formats the follow-up email in her voice
+- At-risk weekly digest — surfaces inactive members, upcoming rate conversions, members who haven't attended any event
+- Onboarding email personalizer — drafts personalized Day 1 welcome using application answers
+- Offboarding exit interview prep — tailored exit questions based on member history
+
+Database tables: `members`, `member_notes` (append-only), `onboarding_steps`, `offboarding_steps`, `events`, `event_attendance`
+
+**Infrastructure completed this session:**
+- Supabase project created, credentials saved in 1Password
+- GitHub repo `she-starts-over-tools` created (private, under pocsgeri1)
+- Vercel project created, env vars added: `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `CLAUDE_API_KEY`
+- Porkbun CNAME added: `tools` → `cname.vercel-dns.com`
+- `tools.shestartsover.co` is live (pending DNS propagation)
+
+**Open items:**
+- Cloudflare Access gate for `tools.shestartsover.co` — deferred, add once community is live
+- Write Brevo onboarding email sequence (Day 0 / Day 3 / Week 3 / Month 5) — dedicated session
+- Circle setup — dedicated session, ~1 week before launch
+- Terms & Conditions + Community Guidelines — still outstanding
+
+**Next session task:** Build the tools site. Start with SQL schema → paste into Supabase SQL Editor, then build pages in order: index → members → member → new-member → health. AI features wired in last.
 
 ---
 
@@ -136,6 +188,27 @@
 - [ ] Print 4–6 conversation cards for icebreaker (shortlist in Phase 4B)
 - [ ] Run brunch
 - [ ] Run founding member calls from both events
+
+**Tools site (next session):**
+- [ ] Build SQL schema → paste into Supabase SQL Editor
+- [ ] Build `index.html` dashboard + shared `style.css` + `supabase.js`
+- [ ] Build `members.html`, `member.html`, `new-member.html`, `health.html`
+- [ ] Wire in AI features (Claude API via Vercel serverless `/api/ai.js`)
+- [ ] Add simple login page (sessionStorage auth)
+- [ ] Add Cloudflare Access gate (deferred — after community launches)
+
+**Brevo (dedicated session):**
+- [ ] Write onboarding email sequence: Day 0 / Day 3 / Week 3 / Month 5 week 3
+- [ ] Set up Brevo automation triggered when new member added to CRM
+
+**Circle (dedicated session, ~1 week before launch):**
+- [ ] Spaces setup, member profile fields, payment linking, onboarding flow
+
+**Still outstanding:**
+- [ ] Terms & Conditions
+- [ ] Community Guidelines
+- [ ] Content for 3–4 upcoming weeks
+- [ ] Lead generation + LinkedIn messaging (ongoing)
 
 **Unresolved (not urgent, doesn't block launch):**
 - Final community/product name — "She Connects Circle" and "She Connects Lounge" are live contenders, availability not yet confirmed (see Phase 8)
